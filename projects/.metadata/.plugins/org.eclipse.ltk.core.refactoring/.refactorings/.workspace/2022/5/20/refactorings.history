@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;test_1&apos; to &apos;7Seg_mux_countUpDown&apos;" description="Rename resource &apos;test_1&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/test_1" name="7Seg_mux_countUpDown" stamp="1652011798382" updateReferences="true"/>&#x0A;<refactoring comment="Delete resource &apos;7Seg_mux_SW/7Seg_mux_SW&apos;" deleteContents="false" description="Delete resource &apos;7Seg_mux_SW/7Seg_mux_SW&apos;" element1="/7Seg_mux_SW/7Seg_mux_SW" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1652011999132"/>
+</session>

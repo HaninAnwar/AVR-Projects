@@ -1,0 +1,114 @@
+#include <avr/io.h>
+#include <util/delay.h>
+void main(void)
+{
+	DDRA = 0Xff;
+	DDRC = 0Xff;
+	DDRB = 0x00;
+	DDRD = 0xff;
+	PORTD = 0xff;
+	PORTB = 0xff;
+	char inc = 0,dec = 9;
+
+	char num[10] = {
+						0b00111111 ,
+						0b00000110 ,
+						0b01011011 ,
+						0b01001111 ,
+						0b01100110 ,
+						0b01101101 ,
+						0b01111101 ,
+						0b00000111 ,
+						0b01111111 ,
+						0b01101111
+		};
+
+
+	while(1)
+	{
+		for (dec = 9 ,inc = 0;;)
+		{
+			PORTC = 0b10000000;
+			PORTA = num[dec];
+			_delay_ms(10);
+			PORTA = num[inc] | 1<<7 ;
+			PORTC = 0b00000000;//SEG2 ON
+			_delay_ms(10);
+
+
+			if(((PINB & 0x2) == 0) && (dec > 0))
+			{
+				_delay_ms(50);
+				dec--;
+				PORTA = num[dec];
+				_delay_ms(10);
+				PORTA = num[inc] | 1<<7 ;
+				PORTC = 0b00000000;//SEG2 ON
+				_delay_ms(10);
+				PORTD = 0xff;
+				_delay_ms(100);
+				PORTD = 0x00;
+			}
+
+			if(((PINB & 0x1) == 0) && (inc < 9))
+			{
+				_delay_ms(50);
+				inc++;
+				PORTA = num[dec];
+				_delay_ms(10);
+				PORTA = num[inc] | 1<<7 ;
+				PORTC = 0b00000000;//SEG2 ON
+				_delay_ms(10);
+				PORTD = 0xff;
+				_delay_ms(100);
+				PORTD = 0x00;
+			}
+		}
+
+
+
+		/*PORTC = 0b10000000;//SEG2 OFF
+		PORTA = num[dec];//SEG1 ON
+		//_delay_ms(10);
+		//PORTA = num[inc] | 1<<7 ;
+		//PORTC = 0b00000000;//SEG2 ON
+		//_delay_ms(100);
+
+		if((PINB & 0b00000001 == 0) && (inc <=9))
+		{
+			//_delay_ms(50);
+			inc++;
+			PORTD = 0x0f;
+			_delay_ms(500);
+			PORTD = 0x00;
+		}
+			//PORTC = 0b10000000;//SEG2 OFF
+			//PORTA = num[inc];//SEG1 ON
+			//_delay_ms(10);
+			//PORTA = num[inc] | 1<<7 ;
+			//PORTC = 0b00000000;//SEG2 ON
+			//_delay_ms(250);
+
+
+		if((PINB & 0b00000010 == 0) && (dec >=0))
+		{
+			//_delay_ms(50);
+			dec--;
+
+			PORTD = 0xf0;
+			_delay_ms(500);
+			PORTD = 0x00;
+		}
+			PORTC = 0b10000000;//SEG2 OFF
+			PORTA = num[dec];//SEG1 ON
+			//_delay_ms(10);
+			//PORTA = num[inc] | 1<<7 ;
+			//PORTC = 0b00000000;//SEG2 ON
+			_delay_ms(250);
+
+
+*/
+
+	}
+
+}

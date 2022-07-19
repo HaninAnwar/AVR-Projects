@@ -1,0 +1,39 @@
+02:15:38 **** Incremental Build of configuration Debug for project SW ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c:7: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: SW.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,SW.map -mmcu=atmega32 -o "SW.elf"  ./DIO_program.o ./LED_program.o ./SW_program.o ./main.o   
+Finished building target: SW.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S SW.elf  >"SW.lss"
+Finished building: SW.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex SW.elf  "SW.hex"
+Finished building: SW.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 SW.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7148 bytes (21.8% Full)
+(.text + .data + .bootloader)
+
+Data:        264 bytes (12.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+02:15:39 Build Finished (took 817ms)
+

@@ -1,0 +1,21 @@
+#include <avr/io.h>
+#include <util/delay.h>
+void main(void)
+
+{
+	DDRA = 0Xff;
+	DDRB = 0Xff;
+
+	while(1)
+	{
+		PORTB = 0b10000000;//SEG2 OFF
+		PORTA = 0b00111111;//SEG1 ON
+		_delay_ms(10);// WAIT 10 MS
+		PORTA = 0b10111111;//SEG1 OFF
+		PORTB = 0b00000000;//SEG2 ON
+		_delay_ms(10);
+
+
+
+	}
+}

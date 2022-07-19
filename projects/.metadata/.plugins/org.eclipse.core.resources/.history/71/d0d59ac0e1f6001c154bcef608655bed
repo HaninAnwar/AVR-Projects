@@ -1,0 +1,76 @@
+/********************* **************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : MCAL         ************************/
+/************************ SWC    : SDD          ************************/
+/************************ VERSIO : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+
+#include "DIO_registers.h"
+#include "SDD_interface.h"
+#include "SDD_config.h"
+#include "SDD_private.h"
+
+
+u8 SDD_u8SetNumber(u8 Copy_u8Number , SDD_T *SDD)
+{
+    u8 Local_Errorstate = 0;
+    u8 Local_NumArr[10] = {	0b00111111 ,
+							0b00000110 ,
+							0b01011011 ,
+							0b01001111 ,
+							0b01100110 ,
+							0b01101101 ,
+							0b01111101 ,
+							0b00000111 ,
+							0b01111111 ,
+							0b01101111
+    						};
+
+    if(SDD->COM_TYPE == SDD_ANODE)
+    {
+    	switch(Copy_u8Number)
+		{
+			 case SDD_u8NUM0 : DIO_u8SetPortValue(SDD->EnablePort ,Local_NumArr[0]); break;
+			 case SDD_u8NUM1 : DIO_u8SetPortValue(SDD->EnablePort ,Local_NumArr[1]); break;
+			 case SDD_u8NUM2 : DIO_u8SetPortValue(SDD->EnablePort ,Local_NumArr[2]); break;
+			 case SDD_u8NUM3 : DIO_u8SetPortValue(SDD->EnablePort ,Local_NumArr[3]); break;
+			 case SDD_u8NUM4 : DIO_u8SetPortValue(SDD->EnablePort ,Local_NumArr[4]); break;
+			 case SDD_u8NUM5 : DIO_u8SetPortValue(SDD->EnablePort ,Local_NumArr[5]); break;
+			 case SDD_u8NUM6 : DIO_u8SetPortValue(SDD->EnablePort ,Local_NumArr[6]); break;
+			 case SDD_u8NUM7 : DIO_u8SetPortValue(SDD->EnablePort ,Local_NumArr[7]); break;
+			 case SDD_u8NUM8 : DIO_u8SetPortValue(SDD->EnablePort ,Local_NumArr[8]); break;
+			 case SDD_u8NUM9 : DIO_u8SetPortValue(SDD->EnablePort ,Local_NumArr[9]); break;
+			 default : Local_Errorstate = 1;
+		}
+    }
+    else if (SDD.COM_TYPE == SDD_CATHODE)
+    {
+    	switch(Copy_u8Number)
+		{
+			 case SDD_u8NUM0 : SDD_u8SetPortValue(SDD.EnablePort ,~Local_NumArr[0]); break;
+			 case SDD_u8NUM1 : SDD_u8SetPortValue(SDD.EnablePort ,~Local_NumArr[1]); break;
+			 case SDD_u8NUM2 : SDD_u8SetPortValue(SDD.EnablePort ,~Local_NumArr[2]); break;
+			 case SDD_u8NUM3 : SDD_u8SetPortValue(SDD.EnablePort ,~Local_NumArr[3]); break;
+			 case SDD_u8NUM4 : SDD_u8SetPortValue(SDD.EnablePort ,~Local_NumArr[4]); break;
+			 case SDD_u8NUM5 : SDD_u8SetPortValue(SDD.EnablePort ,~Local_NumArr[5]); break;
+			 case SDD_u8NUM6 : SDD_u8SetPortValue(SDD.EnablePort ,~Local_NumArr[6]); break;
+			 case SDD_u8NUM7 : SDD_u8SetPortValue(SDD.EnablePort ,~Local_NumArr[7]); break;
+			 case SDD_u8NUM8 : SDD_u8SetPortValue(SDD.EnablePort ,~Local_NumArr[8]); break;
+			 case SDD_u8NUM9 : SDD_u8SetPortValue(SDD.EnablePort ,~Local_NumArr[9]); break;
+			 default : Local_Errorstate = 1;
+		}
+
+    }
+
+    else
+    {
+    	Local_Errorstate = 1;
+    }
+    return Local_Errorstate;
+
+}

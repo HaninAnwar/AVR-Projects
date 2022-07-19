@@ -1,0 +1,41 @@
+05:12:06 **** Build of configuration Debug for project 7Seg_mux_countUpDown ****
+make all 
+Building file: ../DIO3_mux_7_seg.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"DIO3_mux_7_seg.d" -MT"DIO3_mux_7_seg.o" -c -o "DIO3_mux_7_seg.o" "../DIO3_mux_7_seg.c"
+In file included from ../DIO3_mux_7_seg.c:2:
+f:/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../DIO3_mux_7_seg.c:3: warning: return type of 'main' is not 'int'
+Finished building: ../DIO3_mux_7_seg.c
+ 
+Building target: 7Seg_mux_countUpDown.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,7Seg_mux_countUpDown.map -mmcu=atmega32 -o "7Seg_mux_countUpDown.elf"  ./DIO3_mux_7_seg.o   
+Finished building target: 7Seg_mux_countUpDown.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S 7Seg_mux_countUpDown.elf  >"7Seg_mux_countUpDown.lss"
+Finished building: 7Seg_mux_countUpDown.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex 7Seg_mux_countUpDown.elf  "7Seg_mux_countUpDown.hex"
+Finished building: 7Seg_mux_countUpDown.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 7Seg_mux_countUpDown.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    3656 bytes (11.2% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+05:12:18 Build Finished (took 11s.867ms)
+

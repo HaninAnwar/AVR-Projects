@@ -1,0 +1,29 @@
+#include "STD_TYPES.h"
+#include "DIO_interface.h"
+#include "LED_interface.h"
+#include "SW_interface.h"
+
+
+void main()
+{
+	SW_T *SW1;
+	LED_T *LED1;
+	SW1->Port = DIO_u8PORTA;
+	SW1->Pin = DIO_u8PIN0;
+	SW1->PullType = SW_PULL_UP;
+	SW1->SelfLockType = SW_NOT_SELF_LOCK;
+
+	LED1->Port = DIO_u8PORTD;
+	LED1->Pin = DIO_u8PIN0;
+	LED1->ConnectionType = LED_u8SOURCE;
+
+	DIO_u8SetPinDirection(SW1->Port ,SW1->Pin , DIO_u8PIN_INPUT);
+	DIO_u8SetPinDirection(LED1->Port , LED1->Pin , DIO_u8PIN_OUTPUT);
+
+
+
+	while (1)
+	{
+
+	}
+}

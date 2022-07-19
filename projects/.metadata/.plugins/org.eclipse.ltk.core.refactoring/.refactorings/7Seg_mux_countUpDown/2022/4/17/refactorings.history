@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;test_1/test1.c&apos; to &apos;DIO3_mux_7_seg.c&apos;" description="Rename resource &apos;test1.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="test1.c" name="DIO3_mux_7_seg.c" stamp="1650315188775" updateReferences="true"/>
+</session>

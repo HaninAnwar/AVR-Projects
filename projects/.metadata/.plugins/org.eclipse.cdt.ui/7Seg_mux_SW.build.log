@@ -1,0 +1,45 @@
+06:29:39 **** Incremental Build of configuration Debug for project 7Seg_mux_SW ****
+make all 
+Building file: ../7Seg_mux_SW.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"7Seg_mux_SW.d" -MT"7Seg_mux_SW.o" -c -o "7Seg_mux_SW.o" "../7Seg_mux_SW.c"
+In file included from ../7Seg_mux_SW.c:2:
+f:/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../7Seg_mux_SW.c:3: warning: return type of 'main' is not 'int'
+../7Seg_mux_SW.c: In function 'main':
+../7Seg_mux_SW.c:43: warning: array subscript has type 'char'
+../7Seg_mux_SW.c:59: warning: array subscript has type 'char'
+../7Seg_mux_SW.c:77: warning: array subscript has type 'char'
+Finished building: ../7Seg_mux_SW.c
+ 
+Building target: 7Seg_mux_SW.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,7Seg_mux_SW.map -mmcu=atmega32 -o "7Seg_mux_SW.elf"  ./7Seg_mux_SW.o   
+Finished building target: 7Seg_mux_SW.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S 7Seg_mux_SW.elf  >"7Seg_mux_SW.lss"
+Finished building: 7Seg_mux_SW.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex 7Seg_mux_SW.elf  "7Seg_mux_SW.hex"
+Finished building: 7Seg_mux_SW.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 7Seg_mux_SW.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    5888 bytes (18.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+06:29:39 Build Finished (took 958ms)
+

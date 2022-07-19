@@ -1,0 +1,13 @@
+#include <avr/io.h>
+
+void main(void)
+
+{
+	DDRA = 0Xff;
+	PORTA = 0b001111111;
+	while(1)
+	{
+
+
+	}
+}

@@ -1,0 +1,20 @@
+04:56:06 **** Incremental Build of configuration Debug for project DIO ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 DIO.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    1928 bytes (5.9% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+04:56:07 Build Finished (took 234ms)
+
