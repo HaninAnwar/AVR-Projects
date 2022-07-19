@@ -6,18 +6,21 @@
 C_SRCS += \
 ../CLCD_program.c \
 ../DIO_program.c \
+../ShortVideoAboutHamoksha.c \
 ../WriteMyArabicNameInSineWave.c \
 ../main.c 
 
 OBJS += \
 ./CLCD_program.o \
 ./DIO_program.o \
+./ShortVideoAboutHamoksha.o \
 ./WriteMyArabicNameInSineWave.o \
 ./main.o 
 
 C_DEPS += \
 ./CLCD_program.d \
 ./DIO_program.d \
+./ShortVideoAboutHamoksha.d \
 ./WriteMyArabicNameInSineWave.d \
 ./main.d 
 
