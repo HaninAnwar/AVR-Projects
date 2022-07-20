@@ -3,7 +3,7 @@
 /************************ AUTHER : Hanin Anwar  ************************/
 /************************ LAYER  : HAL          ************************/
 /************************ SWC    : DIO          ************************/
-/************************ VERSIO : 1.00         ************************/
+/************************ VERSION : 1.00         ************************/
 /***********************************************************************/
 /***********************************************************************/
 
@@ -23,9 +23,9 @@ typedef struct
 
 
 
-u8 LED_voidTurnOn(LED_T *LED);
-u8 LED_voidTurnOff(LED_T *LED);
-u8 LED_voidBlink(u8 Copy_u8Delay ,LED_T *LED);
+void LED_voidTurnOn(LED_T *LED);
+void LED_voidTurnOff(LED_T *LED);
+void LED_voidBlink(u32 Copy_u8Delay ,LED_T *LED);
 
 
 #endif

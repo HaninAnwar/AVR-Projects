@@ -1,0 +1,63 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : HAL          ************************/
+/************************ SWC    : DIO          ************************/
+/************************ VERSIO : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include <util/delay.h>
+
+
+#include "DIO_interface.h"
+#include "SW_interface.h"
+#include "SW_config.h"
+#include "SW_private.h"
+
+u8 SW_u8GetState(SW_T *SW)
+{
+	u8 Local_ErrorState = 0;
+
+	if(SW->SelfLockType == SW_SelfLock)
+	{
+		if(SW->PullType == SW_PullUp)
+		{
+
+		}
+
+		else if(SW->PullType == SW_PullDn)
+		{
+
+		}
+
+		else
+		{
+			Local_ErrorState = 1;
+		}
+	}
+
+	else if(SW->SelfLockType == SW_NotSelfLock)
+		{
+			if(SW->PullType == SW_PullUp)
+			{
+
+			}
+
+			else if(SW->PullType == SW_PullDn)
+			{
+
+			}
+
+			else
+			{
+				Local_ErrorState = 1;
+			}
+		}
+
+
+
+	return Local_ErrorState;
+}

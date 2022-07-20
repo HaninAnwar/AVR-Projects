@@ -3,7 +3,7 @@
 /************************ AUTHER : Hanin Anwar  ************************/
 /************************ LAYER  : HAL          ************************/
 /************************ SWC    : DIO          ************************/
-/************************ VERSIO : 1.00         ************************/
+/************************ VERSION : 1.00         ************************/
 /***********************************************************************/
 /***********************************************************************/
 
@@ -11,57 +11,90 @@
 #include "BIT_MATH.h"
 #include <util/delay.h>
 
+#include "LED_interface.h"
 
 #include "DIO_interface.h"
-#include "LED_interface.h"
-#include "LED_config.h"
-#include "LED_private.h"
+#include "SW_interface.h"
+#include "SW_config.h"
+#include "SW_private.h"
 
-u8 LED_u8TurnOn(LED_T *LED)
+u8 SW_u8GetState(SW_T *SW,u8 *Copy_pu8State)
 {
-    u8 Local_Errorstate = 0;
+	u8 Local_u8ErrorState = 0;
+	u8 Local_u8get;
 
-	if(LED->ConnectionType == LED_u8SOURCE)
+
+
+	DIO_u8GetPinValue(SW->Port,SW->Pin,&Local_u8get);
+
+	if(SW->SelfLockType == SW_u8SELF_LOCK)
 	{
-		DIO_u8SetPinValue(LED->Port , LED->Pin ,DIO_u8PIN_HIGH);
+		if(SW->PullType == SW_u8PULL_UP)
+		{
+			if(Local_u8get == DIO_u8PIN_LOW)
+
+				*Copy_pu8State = SW_u8PRESSED;
+
+			else
+
+				*Copy_pu8State = SW_u8NOT_PRESSED;
+
+
+		}
+
+		else if(SW->PullType == SW_u8PULL_DN)
+		{
+
+			if(Local_u8get == DIO_u8PIN_HIGH)
+
+				*Copy_pu8State = SW_u8PRESSED;
+
+			else
+				*Copy_pu8State = SW_u8NOT_PRESSED;
+		}
+
+		else
+			Local_u8ErrorState = 1;
 	}
-	else if(LED->ConnectionType == LED_u8SINK)
+
+	else if(SW->SelfLockType == SW_u8NOT_SELF_LOCK)
 	{
-		DIO_u8SetPinValue(LED->Port , LED->Pin ,DIO_u8PIN_LOW);
+		if(SW->PullType == SW_u8PULL_UP)
+		{
+
+			if(Local_u8get == DIO_u8PIN_LOW)
+			{
+				*Copy_pu8State = SW_u8PRESSED;
+			}
+			else
+			{
+				*Copy_pu8State = SW_u8NOT_PRESSED;
+			}
+
+		}
+
+		else if(SW->PullType == SW_u8PULL_DN)
+		{
+
+			if(Local_u8get == DIO_u8PIN_HIGH)
+			{
+				*Copy_pu8State = SW_u8PRESSED;
+			}
+			else
+			{
+				*Copy_pu8State = SW_u8NOT_PRESSED;
+			}
+
+		}
+
+		else
+			Local_u8ErrorState = 1;
+
 	}
+
 	else
-	{
-		Local_Errorstate = 1;
-	}
-	return Local_Errorstate;
-}
-u8 LED_u8TurnOff(LED_T *LED)
-{
-	u8 Local_Errorstate = 0;
-
-	if(LED->ConnectionType == LED_u8SOURCE)
-	{
-		DIO_u8SetPinDirection(LED->Port , LED->Pin , DIO_u8PIN_OUTPUT);
-		DIO_u8SetPinValue(LED->Port , LED->Pin ,DIO_u8PIN_LOW);
-	}
-	else if(LED->ConnectionType == LED_u8SINK)
-	{
-		DIO_u8SetPinDirection(LED->Port , LED->Pin , DIO_u8PIN_OUTPUT);
-		DIO_u8SetPinValue(LED->Port , LED->Pin ,DIO_u8PIN_HIGH);
-	}
-	else
-	{
-		Local_Errorstate = 1;
-	}
-	return Local_Errorstate;
-}
-
-u8 LED_u8Blink(u8 Copy_u8Delay ,LED_T *LED)
-{
-	LED_u8TurnOn(LED);
-	_delay_ms(Copy_u8Delay);
-	LED_u8TurnOff(LED);
-	_delay_ms(Copy_u8Delay);
+		Local_u8ErrorState = 1;
 
 
+	return Local_u8ErrorState;
 }

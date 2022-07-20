@@ -1,11 +1,12 @@
-13:38:40 **** Incremental Build of configuration Debug for project CLCD ****
+14:38:23 **** Incremental Build of configuration Debug for project CLCD ****
 make all 
-Building file: ../ShortVideoAboutHamoksha.c
+Building file: ../main.c
 Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ShortVideoAboutHamoksha.d" -MT"ShortVideoAboutHamoksha.o" -c -o "ShortVideoAboutHamoksha.o" "../ShortVideoAboutHamoksha.c"
-In file included from ../ShortVideoAboutHamoksha.c:3:
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
 f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
-Finished building: ../ShortVideoAboutHamoksha.c
+../main.c:8: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
  
 Building target: CLCD.elf
 Invoking: AVR C Linker
@@ -26,15 +27,15 @@ AVR Memory Usage
 ----------------
 Device: atmega32
 
-Program:   23110 bytes (70.5% Full)
+Program:   17282 bytes (52.7% Full)
 (.text + .data + .bootloader)
 
-Data:        462 bytes (22.6% Full)
+Data:        260 bytes (12.7% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
 
-13:38:41 Build Finished (took 783ms)
+14:38:24 Build Finished (took 795ms)
 

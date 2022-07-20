@@ -1,9 +1,18 @@
-02:15:38 **** Incremental Build of configuration Debug for project SW ****
+12:30:08 **** Incremental Build of configuration Debug for project SW ****
 make all 
+Building file: ../SW_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"SW_program.d" -MT"SW_program.o" -c -o "SW_program.o" "../SW_program.c"
+In file included from ../SW_program.c:12:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../SW_program.c
+ 
 Building file: ../main.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
-../main.c:7: warning: return type of 'main' is not 'int'
+In file included from ../main.c:5:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:8: warning: return type of 'main' is not 'int'
 Finished building: ../main.c
  
 Building target: SW.elf
@@ -25,7 +34,7 @@ AVR Memory Usage
 ----------------
 Device: atmega32
 
-Program:    7148 bytes (21.8% Full)
+Program:    6732 bytes (20.5% Full)
 (.text + .data + .bootloader)
 
 Data:        264 bytes (12.9% Full)
@@ -35,5 +44,5 @@ Data:        264 bytes (12.9% Full)
 Finished building: sizedummy
  
 
-02:15:39 Build Finished (took 817ms)
+12:30:09 Build Finished (took 836ms)
 

@@ -3,29 +3,32 @@
 /************************ AUTHER : Hanin Anwar  ************************/
 /************************ LAYER  : HAL          ************************/
 /************************ SWC    : DIO          ************************/
-/************************ VERSIO : 1.00         ************************/
+/************************ VERSION : 1.00         ************************/
 /***********************************************************************/
 /***********************************************************************/
 
 
-#ifndef  LED_INTERFACE_H_
-#define  LED_INTERFACE_H_
+#ifndef  SW_INTERFACE_H_
+#define  SW_INTERFACE_H_
 
-#define LED_u8SOURCE    	1
-#define LED_u8SINK    		0
+#define SW_u8PRESSED				1
+#define SW_u8NOT_PRESSED    		0
+
+#define SW_u8SELF_LOCK				1
+#define SW_u8NOT_SELF_LOCK			0
+
+#define SW_u8PULL_UP				1
+#define SW_u8PULL_DN				0
 
 typedef struct
 {
 	u8 Port;
 	u8 Pin;
-	u8 ConnectionType;
-}LED_T;
+	u8 SelfLockType;
+	u8 PullType;
 
+}SW_T;
 
-
-u8 LED_u8TurnOn(LED_T *LED);
-u8 LED_u8TurnOff(LED_T *LED);
-u8 LED_u8Blink(u8 Copy_u8Delay ,LED_T *LED);
-
+u8 SW_u8GetState(SW_T *SW, u8 *Copy_pu8State);
 
 #endif

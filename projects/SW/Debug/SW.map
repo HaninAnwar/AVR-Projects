@@ -149,7 +149,7 @@ LOAD f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1ae4
+.text           0x00000000     0x1944
  *(.vectors)
  .vectors       0x00000000       0x54 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -277,30 +277,30 @@ LOAD f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x0000122e      0x150 ./DIO_program.o
                 0x0000122e                DIO_u8GetPinValue
  .text.LED_voidTurnOn
-                0x0000137e       0x64 ./LED_program.o
+                0x0000137e       0x56 ./LED_program.o
                 0x0000137e                LED_voidTurnOn
  .text.LED_voidTurnOff
-                0x000013e2       0x8c ./LED_program.o
-                0x000013e2                LED_voidTurnOff
+                0x000013d4       0x56 ./LED_program.o
+                0x000013d4                LED_voidTurnOff
  .text.LED_voidBlink
-                0x0000146e      0x220 ./LED_program.o
-                0x0000146e                LED_voidBlink
- .text.SW_GetStae
-                0x0000168e      0x336 ./SW_program.o
-                0x0000168e                SW_GetStae
- .text.main     0x000019c4       0xae ./main.o
-                0x000019c4                main
- .text.libgcc   0x00001a72        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00001a72       0x38 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x00001a72                __prologue_saves__
- .text.libgcc   0x00001aaa       0x36 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00001aaa                __epilogue_restores__
- .text.libgcc   0x00001ae0        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                0x00001ae0                . = ALIGN (0x2)
+                0x0000142a      0x21a ./LED_program.o
+                0x0000142a                LED_voidBlink
+ .text.SW_u8GetState
+                0x00001644       0xf8 ./SW_program.o
+                0x00001644                SW_u8GetState
+ .text.main     0x0000173c      0x196 ./main.o
+                0x0000173c                main
+ .text.libgcc   0x000018d2        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x000018d2       0x38 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x000018d2                __prologue_saves__
+ .text.libgcc   0x0000190a       0x36 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x0000190a                __epilogue_restores__
+ .text.libgcc   0x00001940        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x00001940                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001ae0        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00001ae0                exit
-                0x00001ae0                _exit
+ .fini9         0x00001940        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00001940                exit
+                0x00001940                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -319,11 +319,11 @@ LOAD f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001ae0        0x4 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001940        0x4 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001ae4                _etext = .
+                0x00001944                _etext = .
 
-.data           0x00800060      0x108 load address 0x00001ae4
+.data           0x00800060      0x108 load address 0x00001944
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -388,8 +388,8 @@ LOAD f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.bss*)
  *(COMMON)
                 0x00800168                PROVIDE (__bss_end, .)
-                0x00001ae4                __data_load_start = LOADADDR (.data)
-                0x00001bec                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001944                __data_load_start = LOADADDR (.data)
+                0x00001a4c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800168        0x0
                 0x00800168                PROVIDE (__noinit_start, .)
@@ -414,19 +414,19 @@ LOAD f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x12e4
+.stab           0x00000000     0x1158
  *(.stab)
  .stab          0x00000000      0x660 ./DIO_program.o
- .stab          0x00000660      0x5f4 ./LED_program.o
-                                0x66c (size before relaxing)
- .stab          0x00000c54      0x480 ./SW_program.o
-                                0x684 (size before relaxing)
- .stab          0x000010d4      0x210 ./main.o
-                                0x2b8 (size before relaxing)
+ .stab          0x00000660      0x54c ./LED_program.o
+                                0x5c4 (size before relaxing)
+ .stab          0x00000bac      0x2d0 ./SW_program.o
+                                0x4ec (size before relaxing)
+ .stab          0x00000e7c      0x2dc ./main.o
+                                0x510 (size before relaxing)
 
-.stabstr        0x00000000      0xa03
+.stabstr        0x00000000      0xa20
  *(.stabstr)
- .stabstr       0x00000000      0xa03 ./DIO_program.o
+ .stabstr       0x00000000      0xa20 ./DIO_program.o
 
 .stab.excl
  *(.stab.excl)
