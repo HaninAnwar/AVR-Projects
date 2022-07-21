@@ -1,0 +1,45 @@
+13:22:39 **** Incremental Build of configuration Debug for project ShortVideoAboutHamoksha ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:8: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: ShortVideoAboutHamoksha.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ShortVideoAboutHamoksha.map -mmcu=atmega32 -o "ShortVideoAboutHamoksha.elf"  ./CLCD_program.o ./DIO_program.o ./main.o   
+Finished building target: ShortVideoAboutHamoksha.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ShortVideoAboutHamoksha.elf  >"ShortVideoAboutHamoksha.lss"
+Finished building: ShortVideoAboutHamoksha.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ShortVideoAboutHamoksha.elf  "ShortVideoAboutHamoksha.hex"
+Finished building: ShortVideoAboutHamoksha.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex ShortVideoAboutHamoksha.elf  "ShortVideoAboutHamoksha.eep"
+Finished building: ShortVideoAboutHamoksha.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ShortVideoAboutHamoksha.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   14434 bytes (44.0% Full)
+(.text + .data + .bootloader)
+
+Data:        220 bytes (10.7% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+13:22:40 Build Finished (took 847ms)
+
