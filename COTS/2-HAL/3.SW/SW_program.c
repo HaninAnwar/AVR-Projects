@@ -64,10 +64,12 @@ u8 SW_u8GetState(SW_T *SW,u8 *Copy_pu8State)
 
 			if(Local_u8get == DIO_u8PIN_LOW)
 			{
+				_delay_ms(50);
 				*Copy_pu8State = SW_u8PRESSED;
 			}
 			else
 			{
+				_delay_ms(50);
 				*Copy_pu8State = SW_u8NOT_PRESSED;
 			}
 
@@ -78,10 +80,12 @@ u8 SW_u8GetState(SW_T *SW,u8 *Copy_pu8State)
 
 			if(Local_u8get == DIO_u8PIN_HIGH)
 			{
+				_delay_ms(50);
 				*Copy_pu8State = SW_u8PRESSED;
 			}
 			else
 			{
+				_delay_ms(50);
 				*Copy_pu8State = SW_u8NOT_PRESSED;
 			}
 

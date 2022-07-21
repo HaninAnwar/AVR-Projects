@@ -1,0 +1,115 @@
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include <util/delay.h>
+
+#include "DIO_interface.h"
+#include "SW_interface.h"
+#include "CLCD_interface.h"
+#include "LED_interface.h"
+
+void main(void)
+{
+	u8 Local_u8CountUpDn,Local_u8CountRightLeft;
+	u8 Local_u8Up,Local_u8DN,Local_u8Right,Local_u8Left;
+	SW_T *SW_UP, *SW_DN, *SW_RT, *SW_LF;
+	LED_T *LED_UP;
+
+	u8 Local_pu8uSmall[8] =	{
+			0b00001110,
+			0b00010001,
+			0b00001110,
+			0b00000100,
+			0b00011111,
+			0b00000100,
+			0b00001010,
+			0b00010001,
+	};
+
+	SW_UP->Pin = DIO_u8PIN0;
+	SW_UP->Port = DIO_u8PORTB;
+	SW_UP->PullType = SW_u8PULL_UP;
+	SW_UP->SelfLockType = SW_u8NOT_SELF_LOCK;
+
+	SW_DN->Pin = DIO_u8PIN1;
+	SW_DN->Port = DIO_u8PORTB;
+	SW_DN->PullType = SW_u8PULL_UP;
+	SW_DN->SelfLockType = SW_u8NOT_SELF_LOCK;
+
+	SW_RT->Pin = DIO_u8PIN2;
+	SW_RT->Port = DIO_u8PORTB;
+	SW_RT->PullType = SW_u8PULL_UP;
+	SW_RT->SelfLockType = SW_u8NOT_SELF_LOCK;
+
+	SW_LF->Pin = DIO_u8PIN3;
+	SW_LF->Port = DIO_u8PORTB;
+	SW_LF->PullType = SW_u8PULL_UP;
+	SW_LF->SelfLockType = SW_u8NOT_SELF_LOCK;
+
+	DIO_u8SetPortDirection(SW_UP->Port,DIO_u8PIN_INPUT);
+	DIO_u8SetPortValue(SW_UP->Port,DIO_u8PIN_HIGH);
+
+	LED_UP->ConnectionType = LED_u8SOURCE;
+	LED_UP->Pin = DIO_u8PIN0;
+	LED_UP->Port = DIO_u8PORTD;
+
+	DIO_u8SetPortDirection(LED_UP->Port,DIO_u8PIN_OUTPUT);
+
+	/*Initialize LCD Direction */
+
+	DIO_u8SetPortDirection(DIO_u8PORTA,DIO_u8PORT_OUTPUT);
+	DIO_u8SetPinDirection(DIO_u8PORTC,DIO_u8PIN0,DIO_u8PIN_OUTPUT);
+	DIO_u8SetPinDirection(DIO_u8PORTC,DIO_u8PIN1,DIO_u8PIN_OUTPUT);
+	DIO_u8SetPinDirection(DIO_u8PORTC,DIO_u8PIN2,DIO_u8PIN_OUTPUT);
+
+	CLCD_voidInit();
+
+	Local_u8CountUpDn = 0;
+	Local_u8CountRightLeft = 6;
+
+	CLCD_voidSendCommand(1);
+	CLCD_voidWriteSpcialCharacter(Local_pu8uSmall,0,Local_u8CountUpDn,Local_u8CountRightLeft);
+
+	while(1)
+	{
+
+		SW_u8GetState(SW_UP,&Local_u8Up);
+//		SW_u8GetState(SW_DN,&Local_u8DN);
+//		SW_u8GetState(SW_RT,&Local_u8Right);
+//		SW_u8GetState(SW_LF,&Local_u8Left);
+
+//		_delay_ms(150);
+		if (Local_u8Up == SW_u8PRESSED)
+		{
+			Local_u8CountUpDn = 0;
+			CLCD_voidSendCommand(1);
+			CLCD_voidWriteSpcialCharacter(Local_pu8uSmall,0,Local_u8CountUpDn,Local_u8CountRightLeft);
+
+		}
+//
+//		if (Local_u8DN == SW_u8PRESSED)
+//		{
+//			Local_u8CountUpDn = 1;
+//			CLCD_voidSendCommand(1);
+//			CLCD_voidWriteSpcialCharacter(Local_pu8uSmall,0,1,Local_u8CountRightLeft);
+//
+//		}
+//
+//		if (Local_u8Right == SW_u8PRESSED)
+//		{
+////			Local_u8CountRightLeft++;
+//			CLCD_voidSendCommand(1);
+//			CLCD_voidWriteSpcialCharacter(Local_pu8uSmall,0,Local_u8CountUpDn,++Local_u8CountRightLeft);
+//
+//		}
+//		if (Local_u8Left == SW_u8PRESSED)
+//		{
+////			Local_u8CountRightLeft--;
+//			CLCD_voidSendCommand(1);
+//			CLCD_voidWriteSpcialCharacter(Local_pu8uSmall,0,--Local_u8CountUpDn,Local_u8CountRightLeft);
+//
+//		}
+
+
+	}
+
+}

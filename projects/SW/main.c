@@ -16,7 +16,7 @@ void main()
 	SW1->PullType = SW_u8PULL_UP;
 	SW1->SelfLockType = SW_u8NOT_SELF_LOCK;
 
-	LED1->Port = DIO_u8PORTA;
+	LED1->Port = DIO_u8PORTB;
 	LED1->Pin = DIO_u8PIN0;
 	LED1->ConnectionType = LED_u8SOURCE;
 
@@ -30,7 +30,6 @@ void main()
 	{
 
 		SW_u8GetState(SW1,&Local_u8Pressed);
-		_delay_ms(150);
 
 		if(Local_u8Pressed == SW_u8PRESSED)
 		{

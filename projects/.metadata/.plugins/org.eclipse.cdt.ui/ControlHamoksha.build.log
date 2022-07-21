@@ -1,0 +1,12 @@
+13:21:56 **** Incremental Build of configuration Debug for project ControlHamoksha ****
+make all 
+Building file: ../SW_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"SW_program.d" -MT"SW_program.o" -c -o "SW_program.o" "../SW_program.c"
+In file included from ../SW_program.c:12:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../SW_program.c:14:27: error: LED_interface.h: No such file or directory
+make: *** [SW_program.o] Error 1
+
+13:21:56 Build Finished (took 290ms)
+

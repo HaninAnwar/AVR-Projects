@@ -149,7 +149,7 @@ LOAD f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1944
+.text           0x00000000     0x1bf4
  *(.vectors)
  .vectors       0x00000000       0x54 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -286,21 +286,21 @@ LOAD f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x0000142a      0x21a ./LED_program.o
                 0x0000142a                LED_voidBlink
  .text.SW_u8GetState
-                0x00001644       0xf8 ./SW_program.o
+                0x00001644      0x492 ./SW_program.o
                 0x00001644                SW_u8GetState
- .text.main     0x0000173c      0x196 ./main.o
-                0x0000173c                main
- .text.libgcc   0x000018d2        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x000018d2       0x38 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x000018d2                __prologue_saves__
- .text.libgcc   0x0000190a       0x36 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x0000190a                __epilogue_restores__
- .text.libgcc   0x00001940        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                0x00001940                . = ALIGN (0x2)
+ .text.main     0x00001ad6       0xac ./main.o
+                0x00001ad6                main
+ .text.libgcc   0x00001b82        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00001b82       0x38 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00001b82                __prologue_saves__
+ .text.libgcc   0x00001bba       0x36 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x00001bba                __epilogue_restores__
+ .text.libgcc   0x00001bf0        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x00001bf0                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001940        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00001940                exit
-                0x00001940                _exit
+ .fini9         0x00001bf0        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00001bf0                exit
+                0x00001bf0                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -319,11 +319,11 @@ LOAD f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001940        0x4 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001bf0        0x4 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001944                _etext = .
+                0x00001bf4                _etext = .
 
-.data           0x00800060      0x108 load address 0x00001944
+.data           0x00800060      0x108 load address 0x00001bf4
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -388,8 +388,8 @@ LOAD f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.bss*)
  *(COMMON)
                 0x00800168                PROVIDE (__bss_end, .)
-                0x00001944                __data_load_start = LOADADDR (.data)
-                0x00001a4c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001bf4                __data_load_start = LOADADDR (.data)
+                0x00001cfc                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800168        0x0
                 0x00800168                PROVIDE (__noinit_start, .)
@@ -414,15 +414,15 @@ LOAD f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x1158
+.stab           0x00000000     0x1368
  *(.stab)
  .stab          0x00000000      0x660 ./DIO_program.o
  .stab          0x00000660      0x54c ./LED_program.o
                                 0x5c4 (size before relaxing)
- .stab          0x00000bac      0x2d0 ./SW_program.o
-                                0x4ec (size before relaxing)
- .stab          0x00000e7c      0x2dc ./main.o
-                                0x510 (size before relaxing)
+ .stab          0x00000bac      0x594 ./SW_program.o
+                                0x7b0 (size before relaxing)
+ .stab          0x00001140      0x228 ./main.o
+                                0x45c (size before relaxing)
 
 .stabstr        0x00000000      0xa20
  *(.stabstr)

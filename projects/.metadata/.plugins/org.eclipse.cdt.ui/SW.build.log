@@ -1,12 +1,5 @@
-12:30:08 **** Incremental Build of configuration Debug for project SW ****
+04:24:07 **** Incremental Build of configuration Debug for project SW ****
 make all 
-Building file: ../SW_program.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"SW_program.d" -MT"SW_program.o" -c -o "SW_program.o" "../SW_program.c"
-In file included from ../SW_program.c:12:
-f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
-Finished building: ../SW_program.c
- 
 Building file: ../main.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
@@ -34,7 +27,7 @@ AVR Memory Usage
 ----------------
 Device: atmega32
 
-Program:    6732 bytes (20.5% Full)
+Program:    7420 bytes (22.6% Full)
 (.text + .data + .bootloader)
 
 Data:        264 bytes (12.9% Full)
@@ -44,5 +37,5 @@ Data:        264 bytes (12.9% Full)
 Finished building: sizedummy
  
 
-12:30:09 Build Finished (took 836ms)
+04:24:07 Build Finished (took 787ms)
 
