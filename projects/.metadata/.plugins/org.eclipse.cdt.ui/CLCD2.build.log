@@ -1,37 +1,5 @@
-14:10:03 **** Incremental Build of configuration Debug for project CLCD2 ****
+13:00:32 **** Incremental Build of configuration Debug for project CLCD2 ****
 make all 
-Building file: ../PORT_program.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"PORT_program.d" -MT"PORT_program.o" -c -o "PORT_program.o" "../PORT_program.c"
-Finished building: ../PORT_program.c
- 
-Building file: ../main.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
-In file included from ../main.c:3:
-f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
-../main.c:9: warning: return type of 'main' is not 'int'
-../main.c: In function 'main':
-../main.c:11: warning: unused variable 'Local_u8Left'
-../main.c:11: warning: unused variable 'Local_u8Right'
-../main.c:11: warning: unused variable 'Local_u8DN'
-../main.c:11: warning: unused variable 'Local_u8Up'
-../main.c:11: warning: unused variable 'Local_u8Counter'
-Finished building: ../main.c
- 
-Building target: CLCD2.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,CLCD2.map -mmcu=atmega32 -o "CLCD2.elf"  ./CLCD_program.o ./DIO_program.o ./PORT_program.o ./main.o   
-Finished building target: CLCD2.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S CLCD2.elf  >"CLCD2.lss"
-Finished building: CLCD2.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex CLCD2.elf  "CLCD2.hex"
-Finished building: CLCD2.hex
- 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega32 CLCD2.elf
 AVR Memory Usage
@@ -48,5 +16,5 @@ Data:         14 bytes (0.7% Full)
 Finished building: sizedummy
  
 
-14:10:04 Build Finished (took 1s.201ms)
+13:00:32 Build Finished (took 173ms)
 

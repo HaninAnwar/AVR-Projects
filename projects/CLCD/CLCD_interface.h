@@ -17,6 +17,8 @@ void CLCD_voidInit(void);
 
 void CLCD_voidSendCommand(u8 Copy_u8Command);
 
+u8 CLCD_voidReadData(u8 Copy_u8Read);
+
 void CLCD_voidSendData(u8 Copy_u8Data);
 
 void CLCD_voidSendString(const char* Copy_pcString );
