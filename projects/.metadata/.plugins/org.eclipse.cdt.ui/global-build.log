@@ -1,9 +1,36 @@
-13:21:56 **** Incremental Build of configuration Debug for project ControlHamoksha ****
+17:10:24 **** Incremental Build of configuration Debug for project Keypad ****
 make all 
-Building file: ../SW_program.c
+Building file: ../main.c
 Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"SW_program.d" -MT"SW_program.o" -c -o "SW_program.o" "../SW_program.c"
-In file included from ../SW_program.c:12:
-f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
-../SW_program.c:14:27: error: LED_interface.h: No such file or directory
-make: *** [SW_program.o] Error 1
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c:7: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: Keypad.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Keypad.map -mmcu=atmega32 -o "Keypad.elf"  ./CLCD_program.o ./DIO_program.o ./KEYPAD_program.o ./PORT_program.o ./main.o   
+Finished building target: Keypad.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Keypad.elf  >"Keypad.lss"
+Finished building: Keypad.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Keypad.elf  "Keypad.hex"
+Finished building: Keypad.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Keypad.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6186 bytes (18.9% Full)
+(.text + .data + .bootloader)
+
+Data:         32 bytes (1.6% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 

@@ -11,7 +11,6 @@
 #include "BIT_MATH.h"
 #include <util/delay.h>
 
-#include "LED_interface.h"
 
 #include "DIO_interface.h"
 #include "SW_interface.h"
