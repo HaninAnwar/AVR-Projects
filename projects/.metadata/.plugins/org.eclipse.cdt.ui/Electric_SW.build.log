@@ -1,0 +1,20 @@
+04:21:02 **** Build of configuration Debug for project Electric_SW ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Electric_SW.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    5150 bytes (15.7% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+04:21:03 Build Finished (took 875ms)
+

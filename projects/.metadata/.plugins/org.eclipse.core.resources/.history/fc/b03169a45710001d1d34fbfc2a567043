@@ -1,0 +1,18 @@
+#include "STD_TYPES.h"
+#include "DIO_interface.h"
+#include "PORT_interface.h"
+#include <util/delay.h>
+void main (void)
+{
+	PORT_voidInit();
+
+	DIO_u8GetPinValue(DIO_u8PORTB,DIO_u8PIN7,DIO_u8PIN_HIGH);
+
+	_delay_ms(200);
+	DIO_u8GetPinValue(DIO_u8PORTB,DIO_u8PIN7,DIO_u8PIN_LOW);
+
+	while(1)
+	{
+
+	}
+}
