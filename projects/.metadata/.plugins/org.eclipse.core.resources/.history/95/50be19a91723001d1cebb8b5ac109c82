@@ -1,0 +1,33 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : MCAL         ************************/
+/************************ SWC    : EXTI          ************************/
+/************************ VERSION : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+#ifndef  EXTI_INTERFACE_H_
+#define  EXTI_INTERFACE_H_
+
+#define LOW_LEVEL       1
+#define ON_CHANGE       2
+#define FALLING_EDGE    3
+#define RISING_EDGE     4
+
+
+void EXTI_voidInt0Init(void); 
+
+void EXTI_voidInt1Init(void); 
+
+void EXTI_voidInt2Init(void); 
+
+/*Description : A function to set sense control of INT0
+ * Input : Copy_u8Sense , options : 1. LOW_LEVEL
+ *                                  2. ON_CHANGE
+ *                                  3. FALLING_EDG
+ *                                  4. RISING_EDGE
+ * */
+u8 EXTI_u8Int0SetSenseControl(u8 Copy_u8Sense);
+
+#endif

@@ -1,0 +1,285 @@
+#include "STD_TYPES.h"
+#include "util/delay.h"
+
+#include "PORT_interface.h"
+#include "DIO_interface.h"
+#include "CLCD_interface.h"
+#include "KEYPAD_interface.h"
+
+void main (void)
+{
+	u8 Local_u8GetSate, Local_u8CurrentPose,Local_u8Operator;
+	u8 Local_u8ZeroFlag,Local_u8SignFlag,Local_u8FloatFlag;
+
+	u32 Local_u32FisrtDigit,Local_u32SecondDigit,Local_u32Result,Local_u32IntVal;
+
+	f32 Local_f32RealVal;
+
+	u32 Local_pu32DigitsArr[10] = {0,1,2,3,4,5,6,7,8,9};
+
+
+	u8 Local_pu8Arrow[8] = {
+			0b00000100,
+			0b00001110,
+			0b00011111,
+			0b00000100,
+			0b00000100,
+			0b00000100,
+			0b00000100,
+			0b00000100,
+
+	};
+
+	PORT_voidInit();
+	CLCD_voidInit();
+
+	Local_u8CurrentPose = 0;
+	Local_u32FisrtDigit = 1;
+	Local_u32SecondDigit = 1;
+	Local_u8Operator = 0;
+	CLCD_voidWriteNumber(1,0,0);
+	CLCD_voidSendData('+');
+	CLCD_voidWriteNumber(1,0,2);
+	CLCD_voidWriteSpcialCharacter(Local_pu8Arrow,0,1,Local_u8CurrentPose);
+
+
+	Local_u8ZeroFlag = 0;
+	Local_u8SignFlag = 0;
+	Local_u8FloatFlag = 0;
+
+	while(1)
+	{
+		do
+		{
+			Local_u8GetSate = KPD_GetPressedKey();
+		}
+		while(Local_u8GetSate == 0xff);
+
+		/*Choose the first digit*/
+		if(Local_u8CurrentPose == 0)
+		{
+			/*Up*/
+			if (Local_u8GetSate == 1)
+			{
+				if(Local_u32FisrtDigit == 9)
+					Local_u32FisrtDigit = -1;
+
+				Local_u32FisrtDigit++;
+
+				CLCD_voidGoToXY(0,0);
+				CLCD_voidWriteNumber(Local_pu32DigitsArr[Local_u32FisrtDigit],0,0);
+			}
+
+			/*Down*/
+			else if (Local_u8GetSate == 2)
+			{
+				if(Local_u32FisrtDigit == 0)
+					Local_u32FisrtDigit = 10;
+
+				Local_u32FisrtDigit--;
+
+				CLCD_voidGoToXY(0,0);
+				CLCD_voidWriteNumber(Local_pu32DigitsArr[Local_u32FisrtDigit],0,0);
+			}
+			/*Enter*/
+			else if (Local_u8GetSate == 3)
+			{
+				Local_u8CurrentPose++;
+
+				CLCD_voidSendCommand(1);
+				CLCD_voidWriteNumber(Local_pu32DigitsArr[Local_u32FisrtDigit],0,0);
+				CLCD_voidGoToXY(0,1);
+				CLCD_voidSendData('+');
+				CLCD_voidSendData('1');
+				CLCD_voidWriteSpcialCharacter(Local_pu8Arrow,0,1,Local_u8CurrentPose);
+
+			}
+
+		}
+
+		/*Choose the operator */
+		else if(Local_u8CurrentPose == 1)
+		{
+			/*Up*/
+			if (Local_u8GetSate == 1)
+			{
+				if(Local_u8Operator == 3)
+					Local_u8Operator = -1;
+
+				Local_u8Operator++;
+
+				CLCD_voidGoToXY(0,1);
+				switch (Local_u8Operator)
+				{
+				case 0 : CLCD_voidSendData('+');break;
+				case 1 : CLCD_voidSendData('-');break;
+				case 2 : CLCD_voidSendData('*');break;
+				case 3 : CLCD_voidSendData('/');break;
+				}
+			}
+
+			/*Down*/
+			else if (Local_u8GetSate == 2)
+			{
+				if(Local_u8Operator == 0)
+					Local_u8Operator = 4;
+
+				Local_u8Operator--;
+
+				CLCD_voidGoToXY(0,1);
+				switch (Local_u8Operator)
+				{
+				case 0 : CLCD_voidSendData('+');break;
+				case 1 : CLCD_voidSendData('-');break;
+				case 2 : CLCD_voidSendData('*');break;
+				case 3 : CLCD_voidSendData('/');break;
+				}
+			}
+
+			/*Enter*/
+			else if (Local_u8GetSate == 3)
+			{
+				Local_u8CurrentPose++;
+
+				CLCD_voidSendCommand(1);
+				CLCD_voidWriteNumber(Local_pu32DigitsArr[Local_u32FisrtDigit],0,0);
+				CLCD_voidGoToXY(0,1);
+
+
+				switch (Local_u8Operator)
+				{
+				case 0 : CLCD_voidSendData('+');break;
+				case 1 : CLCD_voidSendData('-');break;
+				case 2 : CLCD_voidSendData('*');break;
+				case 3 : CLCD_voidSendData('/');Local_u8ZeroFlag = 1;break;
+				}
+				CLCD_voidSendData('1');
+				CLCD_voidWriteSpcialCharacter(Local_pu8Arrow,0,1,Local_u8CurrentPose);
+
+			}
+
+		}
+
+		/*Choose the second digit*/
+		else if(Local_u8CurrentPose == 2)
+		{
+			/*Up*/
+			if (Local_u8GetSate == 1)
+			{
+				if(Local_u32SecondDigit == 9)
+				{
+					if(Local_u8ZeroFlag == 1)
+
+						Local_u32SecondDigit = 0;
+					else
+						Local_u32SecondDigit = -1;
+				}
+
+				Local_u32SecondDigit++;
+
+				CLCD_voidGoToXY(0,2);
+				CLCD_voidWriteNumber(Local_pu32DigitsArr[Local_u32SecondDigit],0,2);
+
+
+			}
+
+			/*Down*/
+			else if (Local_u8GetSate == 2)
+			{
+				if(Local_u32SecondDigit == 1 && Local_u8ZeroFlag == 1)
+					Local_u32SecondDigit = 10;
+
+				else if(Local_u32SecondDigit == 0)
+					Local_u32SecondDigit = 10;
+
+				Local_u32SecondDigit--;
+
+				CLCD_voidGoToXY(0,2);
+				CLCD_voidWriteNumber(Local_pu32DigitsArr[Local_u32SecondDigit],0,2);
+
+			}
+
+			/*Enter*/
+			else if (Local_u8GetSate == 3)
+			{
+				Local_u8CurrentPose++;
+
+				CLCD_voidSendCommand(1);
+				CLCD_voidWriteNumber(Local_pu32DigitsArr[Local_u32FisrtDigit],0,0);
+				CLCD_voidGoToXY(0,1);
+				switch (Local_u8Operator)
+				{
+				case 0 : CLCD_voidSendData('+');break;
+				case 1 : CLCD_voidSendData('-');break;
+				case 2 : CLCD_voidSendData('*');break;
+				case 3 : CLCD_voidSendData('/');break;
+				}
+				CLCD_voidWriteNumber(Local_pu32DigitsArr[Local_u32SecondDigit],0,2);
+				CLCD_voidWriteSpcialCharacter(Local_pu8Arrow,0,1,Local_u8CurrentPose);
+
+			}
+		}
+
+		/*Calculate and get the result*/
+		if (Local_u8CurrentPose == 3)
+		{
+			switch(Local_u8Operator)
+			{
+			case 0 :
+				Local_u32Result = Local_u32FisrtDigit + Local_u32SecondDigit;
+				break;
+
+			case 1 :
+				if (Local_u32FisrtDigit >= Local_u32SecondDigit)
+					Local_u32Result = Local_u32FisrtDigit - Local_u32SecondDigit;
+
+				else
+				{
+					Local_u32Result =  Local_u32SecondDigit - Local_u32FisrtDigit;
+					Local_u8SignFlag = 1;
+				}
+				break;
+
+			case 2 :
+
+				Local_u32Result = Local_u32FisrtDigit * Local_u32SecondDigit;
+				break;
+
+			case 3 :
+				Local_u32IntVal = Local_u32FisrtDigit / Local_u32SecondDigit;
+//				if(Local_u32FisrtDigit % )
+				break;
+			}
+
+			CLCD_voidSendCommand(1);
+			CLCD_voidWriteNumber(Local_pu32DigitsArr[Local_u32FisrtDigit],0,0);
+			CLCD_voidGoToXY(0,1);
+			switch (Local_u8Operator)
+			{
+			case 0 : CLCD_voidSendData('+');break;
+			case 1 : CLCD_voidSendData('-');break;
+			case 2 : CLCD_voidSendData('*');break;
+			case 3 : CLCD_voidSendData('/');break;
+			}
+			CLCD_voidWriteNumber(Local_pu32DigitsArr[Local_u32SecondDigit],0,2);
+			CLCD_voidGoToXY(0,3);
+			CLCD_voidSendData('=');
+
+			if(Local_u8SignFlag == 1)
+			{
+				CLCD_voidSendData('-');
+				CLCD_voidWriteNumber(Local_u32Result,0,5);
+				CLCD_voidWriteSpcialCharacter(Local_pu8Arrow,0,1,Local_u8CurrentPose+2);
+
+
+			}
+			else
+			{
+				CLCD_voidWriteNumber(Local_u32Result,0,4);
+				CLCD_voidWriteSpcialCharacter(Local_pu8Arrow,0,1,Local_u8CurrentPose+1);
+
+			}
+		}
+
+	}
+}

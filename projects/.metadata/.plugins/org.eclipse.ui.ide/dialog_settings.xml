@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="F:\Embedded\Assignments\projects\SimpleCalculator"/>
+		<item value="F:\Embedded\Assignments\projects\ShortVideoAboutHamoksha"/>
 		<item value="F:\Embedded\Assignments\projects\ControlHamoksha"/>
 		<item value="F:\Embedded\Assignments\projects\CLCD"/>
 		<item value="F:\Embedded\Assignments\projects\SW"/>

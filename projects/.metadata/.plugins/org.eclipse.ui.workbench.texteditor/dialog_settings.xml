@@ -6,37 +6,37 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="LED_UP" key="selection"/>
+		<item value="Local_u32Result" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="LED1"/>
-			<item value="SW1"/>
-			<item value="200"/>
-			<item value="10"/>
-			<item value="50"/>
-			<item value="100"/>
-			<item value="25"/>
-			<item value="250"/>
+			<item value="Local_u8Result"/>
+			<item value="Local_u8DigitsCounter"/>
+			<item value="Local_u32CurrentDigitArr"/>
+			<item value="Local_u8SecondOperandFlag"/>
+			<item value="Local_u32FirstOperand"/>
+			<item value="Local_u32FisrtOperand"/>
+			<item value="Local_u8FisrtOperand"/>
+			<item value="Local_u8DivisionFlag"/>
 		</list>
 		<list key="replacehistory">
-			<item value="LED_UP"/>
-			<item value="SW_UP"/>
-			<item value="50"/>
-			<item value="200"/>
-			<item value="10"/>
-			<item value="100"/>
-			<item value="25"/>
-			<item value="250"/>
+			<item value="Local_u32Result"/>
+			<item value="Local_u8FirstCounter"/>
+			<item value="Local_u32FirstOperArr"/>
+			<item value="Local_u8FirstOperandFlag"/>
+			<item value="Local_u32CurrentDigit"/>
+			<item value="Local_u32FirstOperand"/>
+			<item value="Local_u32FisrtOperand"/>
+			<item value="Local_u8ZeroFlag"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="284" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="391" key="DIALOG_HEIGHT"/>
-		<item value="847" key="DIALOG_X_ORIGIN"/>
-		<item value="108" key="DIALOG_Y_ORIGIN"/>
+		<item value="1090" key="DIALOG_X_ORIGIN"/>
+		<item value="178" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

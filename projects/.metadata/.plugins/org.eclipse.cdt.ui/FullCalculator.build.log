@@ -1,0 +1,41 @@
+12:54:32 **** Incremental Build of configuration Debug for project FullCalculator ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:2:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:10: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: FullCalculator.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,FullCalculator.map -mmcu=atmega32 -o "FullCalculator.elf"  ./CLCD_program.o ./DIO_program.o ./KEYPAD_program.o ./PORT_program.o ./main.o   
+Finished building target: FullCalculator.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S FullCalculator.elf  >"FullCalculator.lss"
+Finished building: FullCalculator.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex FullCalculator.elf  "FullCalculator.hex"
+Finished building: FullCalculator.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 FullCalculator.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    9060 bytes (27.6% Full)
+(.text + .data + .bootloader)
+
+Data:         98 bytes (4.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+12:54:33 Build Finished (took 962ms)
+

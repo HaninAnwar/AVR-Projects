@@ -1,0 +1,49 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : MCAL         ************************/
+/************************ SWC    : ADC          ************************/
+/************************ VERSION : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+#ifndef ADC_INTERFACE_H_
+#define ADC_INTERFACE_H_
+
+#define AREF			    1
+#define AVCC			    2
+#define INTERNAL_VOLT	    3
+
+#define ENABLED			    1
+#define DISABLED		    2
+
+#define LEFT			    1
+#define RIGHT			    2
+
+
+#define DIV_BY_2   		    1
+#define DIV_BY_4     	    2
+#define DIV_BY_8     	    3
+#define DIV_BY_16     	    4
+#define DIV_BY_32     	    5
+#define DIV_BY_64     	    6
+#define DIV_BY_128     	    7
+
+#define PRESCALING_MASK		0b11111000
+
+#define FREE_RUN			0
+#define ANALOG_COMP			1
+#define EXTI				2
+#define TIMER0_COMP			3
+#define TIMER0_OVERFLOW		4
+#define TIMER1_COMP			5
+#define TIMER1_OVERFLOW		6
+#define TIMER1_EVENT_CAPT	7
+
+#define TRIGGER_SRC_MASK	0b00011111
+
+void ADC_voidInit(void);
+
+u8 ADC_u8GetChannelReading(u8 Copy_u8Channel);
+
+#endif

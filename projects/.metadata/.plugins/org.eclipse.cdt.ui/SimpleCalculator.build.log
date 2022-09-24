@@ -1,0 +1,41 @@
+10:28:12 **** Incremental Build of configuration Debug for project SimpleCalculator ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:2:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:9: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: SimpleCalculator.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,SimpleCalculator.map -mmcu=atmega32 -o "SimpleCalculator.elf"  ./CLCD_program.o ./DIO_program.o ./KEYPAD_program.o ./PORT_program.o ./main.o   
+Finished building target: SimpleCalculator.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S SimpleCalculator.elf  >"SimpleCalculator.lss"
+Finished building: SimpleCalculator.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex SimpleCalculator.elf  "SimpleCalculator.hex"
+Finished building: SimpleCalculator.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 SimpleCalculator.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    9140 bytes (27.9% Full)
+(.text + .data + .bootloader)
+
+Data:         80 bytes (3.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+10:28:14 Build Finished (took 1s.198ms)
+

@@ -1,0 +1,20 @@
+16:56:16 **** Incremental Build of configuration Debug for project SimpleTimer ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 SimpleTimer.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7072 bytes (21.6% Full)
+(.text + .data + .bootloader)
+
+Data:         80 bytes (3.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+16:56:16 Build Finished (took 292ms)
+

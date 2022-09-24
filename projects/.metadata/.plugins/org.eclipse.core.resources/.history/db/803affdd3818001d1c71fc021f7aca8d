@@ -1,0 +1,149 @@
+#include "STD_TYPES.h"
+#include "util/delay.h"
+
+#include "PORT_interface.h"
+#include "DIO_interface.h"
+
+#include "KEYPAD_interface.h"
+#include "CLCD_interface.h"
+
+void main(void)
+{
+	u8 Local_u8PressedValue,Local_u8FirstCounter,Local_u8SecondCounter,Local_u8CurrentX,Local_u8CurrentY,Local_u8Operator;
+	u8 Local_u8CountOut,Local_u8CountIn;
+	u8 Local_u8FirstOperandFlag,Local_u8SignFlag;
+
+	u32 Local_u32CurrentDigit,Local_u32FirstOperand,Local_u32SecondOperand;
+	u32 Local_u32Result;
+	u32 Local_u32FirstOperArr[28],Local_u32SecondOperArr[28];
+
+	PORT_voidInit();
+	CLCD_voidInit();
+
+	Local_u8FirstCounter = 0;
+	Local_u8CurrentX = 0;
+	Local_u8CurrentY = 0;
+	Local_u32CurrentDigit = 0;
+	Local_u8SecondCounter = 0;
+	Local_u32FirstOperand = 0;
+	Local_u32SecondOperand = 0;
+	Local_u8FirstOperandFlag = 0;
+	Local_u8SignFlag = 0;
+	Local_u32Result = 0;
+
+
+	while(1)
+	{
+		do
+		{
+			Local_u8PressedValue = KPD_GetPressedKey();
+
+		}
+		while(Local_u8PressedValue == 0xff);
+
+		if (Local_u8PressedValue <= 9)
+		{
+			if(Local_u8FirstOperandFlag == 0)
+			{
+				Local_u32FirstOperArr[Local_u8FirstCounter++] = Local_u8PressedValue;
+				CLCD_voidWriteNumber(Local_u8PressedValue,Local_u8CurrentX,Local_u8CurrentY++);
+
+			}
+
+			else
+			{
+				Local_u32SecondOperArr[Local_u8SecondCounter++] = Local_u8PressedValue;
+				CLCD_voidWriteNumber(Local_u8PressedValue,Local_u8CurrentX,Local_u8CurrentY++);
+
+			}
+
+		}
+
+		if ((Local_u8PressedValue == '+' )|
+				(Local_u8PressedValue == '-' )|
+				(Local_u8PressedValue == '*' )|
+				(Local_u8PressedValue == '/')|
+				(Local_u8PressedValue == '='))
+		{
+
+
+			if(Local_u8PressedValue != '=')
+			{
+				Local_u8Operator = Local_u8PressedValue;
+				CLCD_voidGoToXY(Local_u8CurrentX,Local_u8CurrentY++);
+				CLCD_voidSendData(Local_u8Operator);
+
+
+				if(Local_u8FirstOperandFlag == 0)
+				{
+					/*Save The first operand*/
+					for (Local_u8CountOut = 0; Local_u8CountOut < Local_u8FirstCounter ; Local_u8CountOut++)
+					{
+						Local_u32CurrentDigit = Local_u32FirstOperArr[Local_u8CountOut];
+
+						for(Local_u8CountIn = 0 ; Local_u8CountIn < Local_u8FirstCounter-Local_u8CountOut-1 ;Local_u8CountIn++)
+						{
+							Local_u32CurrentDigit *=  10;
+						}
+						Local_u32FirstOperand += Local_u32CurrentDigit;
+					}
+
+				}
+				/*raise first operand flag to indicate that the first operand is fully entered*/
+				Local_u8FirstOperandFlag = 1;
+			}
+
+			else if (Local_u8PressedValue == '=')
+			{
+				CLCD_voidGoToXY(Local_u8CurrentX,Local_u8CurrentY++);
+				CLCD_voidSendData(Local_u8PressedValue);
+
+				/*Save The second operand*/
+				for (Local_u8CountOut = 0; Local_u8CountOut < Local_u8SecondCounter ; Local_u8CountOut++)
+				{
+					Local_u32CurrentDigit = Local_u32SecondOperArr[Local_u8CountOut];
+
+					for(Local_u8CountIn = 0 ; Local_u8CountIn < Local_u8SecondCounter-Local_u8CountOut-1 ;Local_u8CountIn++)
+					{
+						Local_u32CurrentDigit *=  10;
+					}
+
+					Local_u32SecondOperand += Local_u32CurrentDigit;
+				}
+
+				switch(Local_u8Operator)
+				{
+				case '+': Local_u32Result = Local_u32FirstOperand + Local_u32SecondOperand;break;
+				case '-':
+					if (Local_u32FirstOperand >= Local_u32SecondOperand)
+						Local_u32Result = Local_u32FirstOperand - Local_u32SecondOperand;
+
+					else
+					{
+						Local_u32Result =  Local_u32SecondOperand - Local_u32FirstOperand;
+						Local_u8SignFlag = 1;
+					}
+
+					break;
+
+				case '*': Local_u32Result = Local_u32FirstOperand * Local_u32SecondOperand;break;
+				case '/': Local_u32Result = Local_u32FirstOperand / Local_u32SecondOperand;break;
+				default : CLCD_voidSendData(Local_u8Operator);
+				}
+
+				if(Local_u8SignFlag == 0)
+				{
+					CLCD_voidWriteNumber(Local_u32Result,Local_u8CurrentX,Local_u8CurrentY++);
+				}
+				else
+				{
+					CLCD_voidSendData('-');
+					Local_u8CurrentY++;
+					CLCD_voidWriteNumber(Local_u32Result,Local_u8CurrentX,Local_u8CurrentY++);
+
+				}
+			}
+
+		}
+	}
+}

@@ -7,25 +7,30 @@
 
 #include "LED_interface.h"
 
+void INT1_ISR(void);
+
 void main(void)
 {
 	PORT_voidInit();
 
-	EXTI_voidInt0Init();
+	EXTI_u8IntSetSenseControl(EXTI_INT2,RISING_EDGE);
+	EXTI_u8IntEnableControl(EXTI_INT2,ENABLED);
+//	EXTI_voidInt1Init();
 	GIE_voidEnable();
 
+	EXTI_u8Int2SetCallback(&INT1_ISR);
 	while(1)
 	{
 
 	}
 }
 
-void __vector_1(void) __attribute__((signal));
-void __vector_1(void)
+
+void INT1_ISR(void)
 {
 	LED_T *LED1;
 	LED1->ConnectionType = LED_u8SOURCE;
-	LED1->Port = DIO_u8PORTA;
+	LED1->Port = DIO_u8PORTB;
 	LED1->Pin = DIO_u8PIN0;
 
 	LED_voidTurnOn(LED1);

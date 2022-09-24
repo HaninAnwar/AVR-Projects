@@ -17,7 +17,6 @@
 #include "CLCD_config.h"
 #include "CLCD_private.h"
 
-u8 Global_u8CountChar;
 
 void CLCD_voidSendCommand(u8 Copy_u8Command)
 {
@@ -40,35 +39,6 @@ void CLCD_voidSendCommand(u8 Copy_u8Command)
 void CLCD_voidSendData(u8 Copy_u8Data)
 {
 
-
-//	u8 Copy_u8Read = 0b00000000;
-//	u8 Local_u8Get;
-//
-//	/*Set RS LOW for Command*/
-//	DIO_u8SetPinValue(CLCD_CTRL_PORT,CLCD_RS_PIN,DIO_u8PIN_LOW);
-//
-//	/*Set RW HIGH for Read*/
-//	DIO_u8SetPinValue(CLCD_CTRL_PORT,CLCD_RW_PIN,DIO_u8PIN_HIGH);
-//
-//	CLCD_voidSendCommand(Copy_u8Read);
-//
-//	/*Set Port Input to read the data*/
-////	DIO_u8SetPortDirection(CLCD_DATA_PORT,DIO_u8PORT_INPUT);
-//
-//	DIO_u8GetPinValue(CLCD_CTRL_PORT,DIO_u8PIN5,&Local_u8Get);
-//
-//
-//	if(Local_u8Get == 1)
-//	{
-//		CLCD_voidGoToXY(1,0);
-//	}
-
-//	DIO_u8SetPortDirection(CLCD_DATA_PORT,DIO_u8PORT_OUTPUT);
-	if(Global_u8CountChar == 16)
-	{
-		CLCD_voidGoToXY(1,0);
-	}
-
 	/*Set RS HIGH for data*/
 	DIO_u8SetPinValue(CLCD_CTRL_PORT,CLCD_RS_PIN,DIO_u8PIN_HIGH);
 
@@ -82,7 +52,6 @@ void CLCD_voidSendData(u8 Copy_u8Data)
 	DIO_u8SetPinValue(CLCD_CTRL_PORT,CLCD_E_PIN,DIO_u8PIN_HIGH);
 	_delay_ms(2);
 	DIO_u8SetPinValue(CLCD_CTRL_PORT,CLCD_E_PIN,DIO_u8PIN_LOW);
-	Global_u8CountChar++;
 
 }
 
@@ -112,7 +81,6 @@ void CLCD_voidInit(void)
 
 	/*Clear Display*/
 	CLCD_voidSendCommand(1);
-	Global_u8CountChar = 0;
 
 
 }
@@ -173,15 +141,15 @@ void CLCD_voidWriteSpcialCharacter(u8* Copy_pu8Pattern , u8 Copy_u8PatternNum , 
 	CLCD_voidSendData(Copy_u8PatternNum);
 }
 
-void CLCD_voidWriteNumber(u32 Copy_u23Number)
+void CLCD_voidWriteNumber(u32 Copy_u32Number,u8 Copy_u8XPose , u8 Copy_u8YPose)
 {
 	u8 Local_u8Counter , Local_u8NumberOfDigits , Local_pu8Arr[30] , Local_u8X , Local_u8Y;
-	u32 Local_u32Number = Copy_u23Number;
+	u32 Local_u32Number = Copy_u32Number;
 
 	Local_u8Counter = 0;
 	Local_u8NumberOfDigits = 0;
-	Local_u8X = 0;
-	Local_u8Y = 0;
+	Local_u8X = Copy_u8XPose;
+	Local_u8Y = Copy_u8YPose;
 
 	while(Local_u32Number != 0)
 	{
@@ -189,23 +157,29 @@ void CLCD_voidWriteNumber(u32 Copy_u23Number)
 		Local_u32Number /= 10;
 	}
 
-	for(Local_u8Counter = Local_u8NumberOfDigits - 1 ; (Local_u8Counter >= 0) && (Local_u8Y < Local_u8NumberOfDigits); Local_u8Counter-- , Local_u8Y++)
+	for(Local_u8Counter = Local_u8NumberOfDigits - 1 ; (Local_u8Counter >= 0)&& (Local_u8Y < (Copy_u8YPose + Local_u8NumberOfDigits)); Local_u8Counter--)
 	{
-
+//
 		switch(Local_pu8Arr[Local_u8Counter])
 		{
-		case 0 :  CLCD_voidGoToXY(Local_u8X , Local_u8Y); CLCD_voidSendData('0');break;
-		case 1 :  CLCD_voidGoToXY(Local_u8X , Local_u8Y); CLCD_voidSendData('1');break;
-		case 2 :  CLCD_voidGoToXY(Local_u8X , Local_u8Y); CLCD_voidSendData('2');break;
-		case 3 :  CLCD_voidGoToXY(Local_u8X , Local_u8Y); CLCD_voidSendData('3');break;
-		case 4 :  CLCD_voidGoToXY(Local_u8X , Local_u8Y); CLCD_voidSendData('4');break;
-		case 5 :  CLCD_voidGoToXY(Local_u8X , Local_u8Y); CLCD_voidSendData('5');break;
-		case 6 :  CLCD_voidGoToXY(Local_u8X , Local_u8Y); CLCD_voidSendData('6');break;
-		case 7 :  CLCD_voidGoToXY(Local_u8X , Local_u8Y); CLCD_voidSendData('7');break;
-		case 8 :  CLCD_voidGoToXY(Local_u8X , Local_u8Y); CLCD_voidSendData('8');break;
-		case 9 :  CLCD_voidGoToXY(Local_u8X , Local_u8Y); CLCD_voidSendData('9');break;
+		case 0 :  CLCD_voidGoToXY(Local_u8X ,  Local_u8Y++); CLCD_voidSendData('0');break;
+		case 1 :  CLCD_voidGoToXY(Local_u8X ,  Local_u8Y++); CLCD_voidSendData('1');break;
+		case 2 :  CLCD_voidGoToXY(Local_u8X ,  Local_u8Y++); CLCD_voidSendData('2');break;
+		case 3 :  CLCD_voidGoToXY(Local_u8X ,  Local_u8Y++); CLCD_voidSendData('3');break;
+		case 4 :  CLCD_voidGoToXY(Local_u8X ,  Local_u8Y++); CLCD_voidSendData('4');break;
+		case 5 :  CLCD_voidGoToXY(Local_u8X ,  Local_u8Y++); CLCD_voidSendData('5');break;
+		case 6 :  CLCD_voidGoToXY(Local_u8X ,  Local_u8Y++); CLCD_voidSendData('6');break;
+		case 7 :  CLCD_voidGoToXY(Local_u8X ,  Local_u8Y++); CLCD_voidSendData('7');break;
+		case 8 :  CLCD_voidGoToXY(Local_u8X ,  Local_u8Y++); CLCD_voidSendData('8');break;
+		case 9 :  CLCD_voidGoToXY(Local_u8X ,  Local_u8Y++); CLCD_voidSendData('9');break;
 
 		}
+	}
+
+	if (Copy_u32Number == 0)
+	{
+		CLCD_voidGoToXY(Local_u8X , Local_u8Y++);
+		CLCD_voidSendData('0');
 	}
 
 }

@@ -1,0 +1,29 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : MCAL         ************************/
+/************************ SWC    : ADC          ************************/
+/************************ VERSION : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+#ifndef 	ADC_CONFIG_H_
+#define ADC_CONFIG_H_
+
+/*Select the reference voltage for ADC :
+ *Options : 1. AREF
+*			2. AVCC
+*			3.INTERNAL_VOLT*/
+#define	ADC_REF_VOLT	AVCC
+
+/*ADC enable/disable
+ *Options : 1. ENABLED
+ *			2. DISABLED*/
+
+#define ADC_ENABLE		ENABLED
+
+/*ADC adjust contrOl:
+ *Options : 1. LEFT
+ *			2.RIGHT*/
+#define ADC_ADJUST		LEFT
+#endif

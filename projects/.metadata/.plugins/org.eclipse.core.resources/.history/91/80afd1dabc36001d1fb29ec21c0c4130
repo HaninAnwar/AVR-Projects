@@ -1,0 +1,135 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : MCAL         ************************/
+/************************ SWC    : ADC          ************************/
+/************************ VERSION : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+
+#include "ADC_register.h"
+#include "ADC_config.h"
+#include "ADC_private.h"
+#include "ADC_interface.h"
+
+
+void ADC_voidInit(void)
+{
+
+	/*1. check reference voltage*/
+#if ADC_REF_VOLT == AREF
+	CLR_BIT(ADMUX,ADCMUX_REFS0);
+	CLR_BIT(ADMUX,ADCMUX_REFS1);
+
+#elif ADC_REF_VOLT == AVCC
+	SET_BIT(ADMUX,ADCMUX_REFS0);
+	CLR_BIT(ADMUX,ADCMUX_REFS1);
+
+#elif ADC_REF_VOLT == INTERNAL_VOLT
+	SET_BIT(ADMUX,ADCMUX_REFS0);
+	SET_BIT(ADMUX,ADCMUX_REFS1);
+
+#else
+#error "Wrong ADC_REF_VOLT configuration option"
+
+#endif
+
+
+	/*2. check ADC adjust*/
+#if ADC_ADJUST == LEFT
+	SET_BIT(ADMUX,ADCMUX_ADLAR);
+
+#elif ADC_ADJUST == RIGHT
+	CLR_BIT(ADMUX,ADCMUX_ADLAR);
+
+#else
+#error "Wrong ADC_ADJUST configuration option"
+
+#endif
+
+	/*3. Set selected prescaler using bit masking*/
+	ADCSRA &= PRESCALING_MASK; //Clear prescaler bits
+	ADCSRA |= ADC_PRESCALER;
+
+	/*4. Check auto trigger enable*/
+#if ADC_AUTO_TRIGGER_EN == ENABLED
+	SET_BIT(ADCSRA,ADCSRA_ADATE);
+
+	/*Set ADC interrupt source*/
+	SFIOR &= TRIGGER_SRC_MASK;
+	SFIOR |= ADC_TRIGGER_SRC;
+
+
+#elif ADC_AUTO_TRIGGER_EN == DISABLED
+	CLR_BIT(ADCSRA,ADCSRA_ADIE);
+	CLR_BIT(ADCSRA,ADCSRA_ADATE);
+
+#else
+#error "Wrong ADC_AUTO_TRIGGER_EN configuration option"
+
+#endif
+
+	/*5. Check ADC interrupt enable*/
+#if ADC_INT_EN == ENABLED
+	SET_BIT(ADCSRA,ADCSRA_ADIE);
+
+#elif ADC_INT_EN == DISABLED
+	CLR_BIT(ADCSRA,ADCSRA_ADIE);
+
+#else
+#error "Wrong ADC_INT_EN configuration option"
+
+#endif
+
+	/*6. Set selected trigger source*/
+	SFIOR &= TRIGGER_SRC_MASK;
+	SFIOR |= (ADC_TRIGGER_SRC << 5);
+
+	/*7. Check peripheral enable*/
+#if ADC_ENABLE == ENABLED
+	SET_BIT(ADCSRA,ADCSRA_ADEN);
+
+#elif ADC_ENABLE == DISABLED
+	CLR_BIT(ADCSRA,ADCSRA_ADEN);
+
+#else
+#error "Wrong ADC_ENABLE configuration option"
+
+#endif
+}
+
+u8 ADC_u8GetChannelReading(u8 Copy_u8Channel)
+{
+
+	/*Clear MUX bits in ADMUX register */
+	ADMUX &= MUX_MASK;
+
+	/*Set the selected channel into MUX bits*/
+	ADMUX |= Copy_u8Channel;
+
+#if ADC_INT_EN == DISABLED
+	/*Start Conversion*/
+	SET_BIT(ADCSRA,ADCSRA_ADSC);
+
+
+	/*Polling (busy waiting) until the conversion complete flag is raised*/
+	while((GET_BIT(ADCSRA,ADCSRA_ADIF))==0);
+
+	/*Clear the conversion complete flag*/
+	SET_BIT(ADCSRA,ADCSRA_ADIF);
+#endif
+
+#if ADC_ADJUST == RIGHT
+	return ADC_2BYTE
+
+#elif ADC_ADJUST == LEFT
+	return ADCH;
+
+#else
+#error "Wrong ADC_USED_BITS configuration option"
+
+#endif
+}

@@ -1,4 +1,861 @@
-21:41:17 **** Incremental Build of configuration Debug for project EXTI ****
+11:32:19 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../ADC_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ADC_program.d" -MT"ADC_program.o" -c -o "ADC_program.o" "../ADC_program.c"
+In file included from ../ADC_program.c:14:
+../ADC_config.h:70:8: error: no macro name given in #define directive
+../ADC_program.c: In function 'ADC_voidInit':
+../ADC_program.c:86: error: invalid type argument of 'unary *' (have 'int')
+../ADC_program.c:87: error: invalid type argument of 'unary *' (have 'int')
+make: *** [ADC_program.o] Error 1
+11:33:43 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../ADC_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ADC_program.d" -MT"ADC_program.o" -c -o "ADC_program.o" "../ADC_program.c"
+In file included from ../ADC_program.c:14:
+../ADC_config.h:70:8: error: no macro name given in #define directive
+../ADC_program.c: In function 'ADC_voidInit':
+../ADC_program.c:86: error: invalid type argument of 'unary *' (have 'int')
+../ADC_program.c:87: error: invalid type argument of 'unary *' (have 'int')
+make: *** [ADC_program.o] Error 1
+11:35:07 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../ADC_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ADC_program.d" -MT"ADC_program.o" -c -o "ADC_program.o" "../ADC_program.c"
+../ADC_program.c: In function 'ADC_voidInit':
+../ADC_program.c:86: error: invalid type argument of 'unary *' (have 'int')
+../ADC_program.c:87: error: invalid type argument of 'unary *' (have 'int')
+make: *** [ADC_program.o] Error 1
+11:35:15 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../ADC_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ADC_program.d" -MT"ADC_program.o" -c -o "ADC_program.o" "../ADC_program.c"
+../ADC_program.c: In function 'ADC_voidInit':
+../ADC_program.c:86: error: invalid type argument of 'unary *' (have 'int')
+../ADC_program.c:87: error: invalid type argument of 'unary *' (have 'int')
+make: *** [ADC_program.o] Error 1
+11:35:19 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../ADC_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ADC_program.d" -MT"ADC_program.o" -c -o "ADC_program.o" "../ADC_program.c"
+../ADC_program.c: In function 'ADC_voidInit':
+../ADC_program.c:86: error: invalid type argument of 'unary *' (have 'int')
+make: *** [ADC_program.o] Error 1
+11:35:37 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../ADC_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ADC_program.d" -MT"ADC_program.o" -c -o "ADC_program.o" "../ADC_program.c"
+Finished building: ../ADC_program.c
+ 
+Building file: ../PORT_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"PORT_program.d" -MT"PORT_program.o" -c -o "PORT_program.o" "../PORT_program.c"
+Finished building: ../PORT_program.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:8: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./DIO_program.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    1468 bytes (4.5% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+11:35:43 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    1468 bytes (4.5% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+11:36:09 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./DIO_program.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    1468 bytes (4.5% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+08:32:28 **** Build of configuration Debug for project ADC ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    1468 bytes (4.5% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+14:41:40 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../ADC_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ADC_program.d" -MT"ADC_program.o" -c -o "ADC_program.o" "../ADC_program.c"
+Finished building: ../ADC_program.c
+ 
+Building file: ../CLCD_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"CLCD_program.d" -MT"CLCD_program.o" -c -o "CLCD_program.o" "../CLCD_program.c"
+In file included from ../CLCD_program.c:12:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../CLCD_program.c
+ 
+Building file: ../PORT_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"PORT_program.d" -MT"PORT_program.o" -c -o "PORT_program.o" "../PORT_program.c"
+Finished building: ../PORT_program.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:9: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:24: error: too few arguments to function 'CLCD_voidWriteNumber'
+make: *** [main.o] Error 1
+14:42:40 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:9: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6720 bytes (20.5% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+14:55:30 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:9: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6720 bytes (20.5% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+15:00:03 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:9: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6720 bytes (20.5% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+15:02:48 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:9: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6714 bytes (20.5% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+05:54:40 **** Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:9: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:24: error: too few arguments to function 'CLCD_voidWriteNumber'
+../main.c:12: warning: unused variable 'Local_u8Temp'
+../main.c:12: warning: unused variable 'Local_u8MilliVolt'
+make: *** [main.o] Error 1
+05:54:53 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:9: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:12: warning: unused variable 'Local_u8Temp'
+../main.c:12: warning: unused variable 'Local_u8MilliVolt'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6576 bytes (20.1% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+05:55:14 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6576 bytes (20.1% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+05:57:50 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../PORT_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"PORT_program.d" -MT"PORT_program.o" -c -o "PORT_program.o" "../PORT_program.c"
+Finished building: ../PORT_program.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:9: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:12: warning: unused variable 'Local_u8Temp'
+../main.c:12: warning: unused variable 'Local_u8MilliVolt'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6584 bytes (20.1% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+05:58:50 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:9: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:12: warning: unused variable 'Local_u8Temp'
+../main.c:12: warning: unused variable 'Local_u8MilliVolt'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6584 bytes (20.1% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+06:10:58 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:9: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:12: warning: unused variable 'Local_u8Temp'
+../main.c:12: warning: unused variable 'Local_u8MilliVolt'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6720 bytes (20.5% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+09:44:14 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../Mapping.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Mapping.d" -MT"Mapping.o" -c -o "Mapping.o" "../Mapping.c"
+In file included from ../Mapping.c:11:
+../MAPPING.h:4: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+../Mapping.c:13: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+make: *** [Mapping.o] Error 1
+09:44:47 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../Mapping.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Mapping.d" -MT"Mapping.o" -c -o "Mapping.o" "../Mapping.c"
+In file included from ../Mapping.c:11:
+../MAPPING.h:4: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+../Mapping.c:13: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+make: *** [Mapping.o] Error 1
+09:45:36 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../Mapping.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Mapping.d" -MT"Mapping.o" -c -o "Mapping.o" "../Mapping.c"
+In file included from ../Mapping.c:11:
+../MAPPING.h:4: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+../Mapping.c:13: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+make: *** [Mapping.o] Error 1
+09:46:18 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../Mapping.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Mapping.d" -MT"Mapping.o" -c -o "Mapping.o" "../Mapping.c"
+In file included from ../Mapping.c:11:
+../MAPPING.h:4: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+../Mapping.c:13: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+make: *** [Mapping.o] Error 1
+09:47:12 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../Mapping.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Mapping.d" -MT"Mapping.o" -c -o "Mapping.o" "../Mapping.c"
+In file included from ../Mapping.c:11:
+../MAPPING.h:4: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+../Mapping.c:13: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+make: *** [Mapping.o] Error 1
+09:49:21 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../Mapping.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Mapping.d" -MT"Mapping.o" -c -o "Mapping.o" "../Mapping.c"
+In file included from ../Mapping.c:11:
+../MAPPING.h:4: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+../Mapping.c:13: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+make: *** [Mapping.o] Error 1
+09:50:11 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../Mapping.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Mapping.d" -MT"Mapping.o" -c -o "Mapping.o" "../Mapping.c"
+In file included from ../Mapping.c:11:
+../MAPPING.h:4: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+../Mapping.c:13: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Mapping'
+make: *** [Mapping.o] Error 1
+09:55:46 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../Mapping.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Mapping.d" -MT"Mapping.o" -c -o "Mapping.o" "../Mapping.c"
+Finished building: ../Mapping.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:4:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:10: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:13: warning: unused variable 'Local_u8MilliVolt'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./Mapping.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7176 bytes (21.9% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+09:55:58 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7176 bytes (21.9% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+09:57:04 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:4:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:10: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:13: warning: unused variable 'Local_u8MilliVolt'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./Mapping.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7186 bytes (21.9% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+09:59:58 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../Mapping.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Mapping.d" -MT"Mapping.o" -c -o "Mapping.o" "../Mapping.c"
+Finished building: ../Mapping.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:4:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:10: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:13: warning: unused variable 'Local_u8MilliVolt'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./Mapping.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7172 bytes (21.9% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+10:00:05 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7172 bytes (21.9% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+10:02:47 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:4:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:10: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:13: warning: unused variable 'Local_u8MilliVolt'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./Mapping.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7172 bytes (21.9% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+10:03:18 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:4:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:10: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:13: warning: unused variable 'Local_u8MilliVolt'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./Mapping.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7172 bytes (21.9% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+15:14:05 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../ADC_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ADC_program.d" -MT"ADC_program.o" -c -o "ADC_program.o" "../ADC_program.c"
+../ADC_program.c:19: error: function 'ADC_pvCallBackNotificationFunc' is initialized like a variable
+../ADC_program.c: In function 'ADC_u8StartConversionAsynch':
+../ADC_program.c:185: error: lvalue required as left operand of assignment
+../ADC_program.c: In function '__vector_16':
+../ADC_program.c:229: warning: the address of 'ADC_pvCallBackNotificationFunc' will never be NULL
+make: *** [ADC_program.o] Error 1
+15:14:09 **** Incremental Build of configuration Debug for project EXTI ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega32 EXTI.elf
@@ -6,10 +863,138 @@ AVR Memory Usage
 ----------------
 Device: atmega32
 
-Program:    5696 bytes (17.4% Full)
+Program:    6978 bytes (21.3% Full)
 (.text + .data + .bootloader)
 
-Data:        264 bytes (12.9% Full)
+Data:        270 bytes (13.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+15:17:46 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../ADC_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ADC_program.d" -MT"ADC_program.o" -c -o "ADC_program.o" "../ADC_program.c"
+../ADC_program.c: In function 'ADC_u8StartConversionAsynch':
+../ADC_program.c:185: warning: assignment from incompatible pointer type
+Finished building: ../ADC_program.c
+ 
+Building file: ../CLCD_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"CLCD_program.d" -MT"CLCD_program.o" -c -o "CLCD_program.o" "../CLCD_program.c"
+In file included from ../CLCD_program.c:12:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../CLCD_program.c
+ 
+Building file: ../DIO_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"DIO_program.d" -MT"DIO_program.o" -c -o "DIO_program.o" "../DIO_program.c"
+Finished building: ../DIO_program.c
+ 
+Building file: ../EXTI_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"EXTI_program.d" -MT"EXTI_program.o" -c -o "EXTI_program.o" "../EXTI_program.c"
+../EXTI_program.c:16:27: error: EXTI_register.h: No such file or directory
+../EXTI_program.c: In function 'EXTI_voidInt0Init':
+../EXTI_program.c:39: error: 'MCUCR' undeclared (first use in this function)
+../EXTI_program.c:39: error: (Each undeclared identifier is reported only once
+../EXTI_program.c:39: error: for each function it appears in.)
+../EXTI_program.c:39: error: 'MCUCR_ISC00' undeclared (first use in this function)
+../EXTI_program.c:40: error: 'MCUCR_ISC01' undeclared (first use in this function)
+../EXTI_program.c:49: error: 'GICR' undeclared (first use in this function)
+../EXTI_program.c:49: error: 'GICR_INT0' undeclared (first use in this function)
+../EXTI_program.c: In function 'EXTI_voidInt1Init':
+../EXTI_program.c:77: error: 'MCUCR' undeclared (first use in this function)
+../EXTI_program.c:77: error: 'MCUCR_ISC10' undeclared (first use in this function)
+../EXTI_program.c:78: error: 'MCUCR_ISC11' undeclared (first use in this function)
+../EXTI_program.c:87: error: 'GICR' undeclared (first use in this function)
+../EXTI_program.c:87: error: 'GICR_INT1' undeclared (first use in this function)
+../EXTI_program.c: In function 'EXTI_voidInt2Init':
+../EXTI_program.c:102: error: 'MCUCSR' undeclared (first use in this function)
+../EXTI_program.c:102: error: 'MCUCSR_ISC2' undeclared (first use in this function)
+../EXTI_program.c:113: error: 'GICR' undeclared (first use in this function)
+../EXTI_program.c:113: error: 'GICR_INT2' undeclared (first use in this function)
+../EXTI_program.c: In function 'EXTI_u8IntSetSenseControl':
+../EXTI_program.c:132: error: 'MCUCR' undeclared (first use in this function)
+../EXTI_program.c:132: error: 'MCUCR_ISC00' undeclared (first use in this function)
+../EXTI_program.c:132: error: 'MCUCR_ISC01' undeclared (first use in this function)
+../EXTI_program.c:144: error: 'MCUCR_ISC10' undeclared (first use in this function)
+../EXTI_program.c:144: error: 'MCUCR_ISC11' undeclared (first use in this function)
+../EXTI_program.c:156: error: 'MCUCSR' undeclared (first use in this function)
+../EXTI_program.c:156: error: 'MCUCSR_ISC2' undeclared (first use in this function)
+../EXTI_program.c: In function 'EXTI_u8IntEnableControl':
+../EXTI_program.c:178: error: 'GICR' undeclared (first use in this function)
+../EXTI_program.c:178: error: 'GICR_INT0' undeclared (first use in this function)
+../EXTI_program.c:187: error: 'GICR_INT1' undeclared (first use in this function)
+../EXTI_program.c:196: error: 'GICR_INT2' undeclared (first use in this function)
+make: *** [EXTI_program.o] Error 1
+15:19:50 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../GIE_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"GIE_program.d" -MT"GIE_program.o" -c -o "GIE_program.o" "../GIE_program.c"
+Finished building: ../GIE_program.c
+ 
+Building file: ../Mapping.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Mapping.d" -MT"Mapping.o" -c -o "Mapping.o" "../Mapping.c"
+Finished building: ../Mapping.c
+ 
+Building file: ../PORT_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"PORT_program.d" -MT"PORT_program.o" -c -o "PORT_program.o" "../PORT_program.c"
+Finished building: ../PORT_program.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:4:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:14: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:27: error: too many arguments to function 'ADC_u8StartConversionSynch'
+../main.c:17: warning: unused variable 'Local_u8Temp'
+../main.c:17: warning: unused variable 'Local_u8MilliVolt'
+make: *** [main.o] Error 1
+15:20:08 **** Incremental Build of configuration Debug for project ADC ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:4:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:14: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:27: warning: passing argument 3 of 'ADC_u8StartConversionAsynch' from incompatible pointer type
+../main.c:17: warning: unused variable 'Local_u8Temp'
+../main.c:17: warning: unused variable 'Local_u8MilliVolt'
+Finished building: ../main.c
+ 
+Building target: ADC.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,ADC.map -mmcu=atmega32 -o "ADC.elf"  ./ADC_program.o ./CLCD_program.o ./DIO_program.o ./GIE_program.o ./Mapping.o ./PORT_program.o ./main.o   
+Finished building target: ADC.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S ADC.elf  >"ADC.lss"
+Finished building: ADC.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ADC.elf  "ADC.hex"
+Finished building: ADC.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 ADC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7234 bytes (22.1% Full)
+(.text + .data + .bootloader)
+
+Data:         15 bytes (0.7% Full)
 (.data + .bss + .noinit)
 
 
