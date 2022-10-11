@@ -11,7 +11,7 @@
 #ifndef  KPD_CONFIG_H_
 #define  KPD_CONFIG_H_
 
-#define KPD_PORT        		DIO_u8PORTD
+#define KPD_PORT        		DIO_u8PORTB
 
 #define KPD_NO_PRESSED_KEY		0xff
 
