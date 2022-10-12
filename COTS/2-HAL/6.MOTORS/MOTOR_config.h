@@ -24,9 +24,9 @@
 
 
 /*Stepper Resolution :
- * for full step : 0.176
- * for half step : 0.088 */
-#define MOTOR_STEPPER_RESOLUTIUON	0.176
+ * Options : 1.FULL_STEP
+* 			 2.HALF_STEP*/
+#define MOTOR_STEPPER_RESOLUTIUON	FULL_STEP
 
 
 #endif
