@@ -240,17 +240,17 @@ u8 ADC_u8StartChainAsynch(Chain_t *Copy_chain)
 			ADC_ISRSource = CHAIN_CHANNEL_ASYNCH;
 
 			/*Initialize all variables globally*/
-			ADC_chain->Channel = Copy_chain->Channel;
-			ADC_chain->Result = Copy_chain->Result;
-			ADC_chain->Size = Copy_chain->Size;
-			ADC_chain->NotificationFunc = Copy_chain->NotificationFunc;
+			ADC_chain.Channel = Copy_chain->Channel;
+			ADC_chain.Result = Copy_chain->Result;
+			ADC_chain.Size = Copy_chain->Size;
+			ADC_chain.NotificationFunc = Copy_chain->NotificationFunc;
 
 			/*Initialize current conversion index*/
 			ADC_u8ChainIndex = 0;
 
 			/*Set the required channel*/
 			ADMUX &= MUX_MASK;
-			ADMUX |= ADC_chain->Channel[ADC_u8ChainIndex];
+			ADMUX |= ADC_chain.Channel[ADC_u8ChainIndex];
 
 			/*Start conversion*/
 			SET_BIT(ADCSRA,ADCSRA_ADSC);
@@ -301,16 +301,16 @@ void __vector_16 (void)
 	{
 		/*Read the current conversion*/
 #if ADC_RESOLUTION == TEN_BITS
-		ADC_chain->Result[ADC_u8ChainIndex] = ADC;
+		ADC_chain.Result[ADC_u8ChainIndex] = ADC;
 
-#elif(ADC_RESOLUTION == EIGHT_BITS)
-		ADC_chain->Result[ADC_u8ChainIndex] = ADCH;
-
+#elif ADC_RESOLUTION == EIGHT_BITS
+		ADC_chain.Result[ADC_u8ChainIndex] = ADCH;
+#endif
 		/*Increment chain index*/
 		ADC_u8ChainIndex++;
 
 		/*check if chain is finished or not*/
-		if(ADC_u8ChainIndex == ADC_chain->Size)
+		if(ADC_u8ChainIndex == ADC_chain.Size)
 		{
 			///*Chain is finished*///
 
@@ -318,7 +318,7 @@ void __vector_16 (void)
 			ADC_u8State = IDLE;
 
 			/*Call notification function*/
-			ADC_chain->NotificationFunc;
+			ADC_chain.NotificationFunc();
 
 			/*Disable conversion complete interrupt*/
 			CLR_BIT(ADCSRA,ADCSRA_ADIE);
@@ -331,7 +331,7 @@ void __vector_16 (void)
 
 			/*Set new required Channel*/
 			ADMUX &= MUX_MASK;
-			ADMUX |= ADC_chain->Channel[ADC_u8ChainIndex];
+			ADMUX |= ADC_chain.Channel[ADC_u8ChainIndex];
 
 			/*Start conversion*/
 			SET_BIT(ADCSRA,ADCSRA_ADSC);

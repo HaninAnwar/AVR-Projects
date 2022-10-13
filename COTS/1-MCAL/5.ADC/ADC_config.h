@@ -30,7 +30,7 @@
  *			*/
 
 
-#define ADC_RESOLUTION				EIGHT_BITS
+#define ADC_RESOLUTION			EIGHT_BITS
 
 /*ADC prescaler selection :
  * Option : 1. DIV_BY_2
