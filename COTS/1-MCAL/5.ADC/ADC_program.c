@@ -185,7 +185,7 @@ u8 ADC_u8StartConversionAsynch(u8 Copy_u8Channel , u16 *Copy_p16Reading , void (
 			ADC_u8State = BUSY;
 
 			/*Make ISR source is single channel*/
-			ADC_ISRSource = SINGLE_CHANNEL_ASYNCH;
+			ADC_ISRSource = SINGLE_CHANNEL;
 
 			/*Initialize Reading variable globally*/
 			ADC_p16Reading = Copy_p16Reading;
@@ -217,6 +217,37 @@ u8 ADC_u8StartConversionAsynch(u8 Copy_u8Channel , u16 *Copy_p16Reading , void (
 	return Local_u8ErrorState;
 }
 
+u8 ADC_u8StartChainsynch(Chain_t *Copy_chain)
+{
+
+	u8 Local_u8ErrorState = OK;
+	u8 Local_u8Counter = 0;
+
+	if (Copy_chain == NULL)
+	{
+		Local_u8ErrorState = NULL_POINTER;
+	}
+
+	else
+	{
+		/*Set ISR source : Chain channels*/
+		ADC_ISRSource = CHAIN_CHANNEL;
+
+		/*Initialize all variables globally*/
+		ADC_chain.Channel = Copy_chain->Channel;
+		ADC_chain.Result = Copy_chain->Result;
+		ADC_chain.Size = Copy_chain->Size;
+		ADC_chain.NotificationFunc = Copy_chain->NotificationFunc;
+
+		/*Initialize current conversion index*/
+		ADC_u8ChainIndex = 0;
+
+		/*Start Conversion*/
+		ADC_u8StartConversionSynch(Copy_chain->Channel[ADC_u8ChainIndex],Copy_chain->Result[ADC_u8ChainIndex]);
+
+	}
+}
+
 u8 ADC_u8StartChainAsynch(Chain_t *Copy_chain)
 {
 	u8 Local_u8ErrorState = OK;
@@ -237,7 +268,7 @@ u8 ADC_u8StartChainAsynch(Chain_t *Copy_chain)
 			ADC_u8State = BUSY;
 
 			/*Make ISR source is chain*/
-			ADC_ISRSource = CHAIN_CHANNEL_ASYNCH;
+			ADC_ISRSource = CHAIN_CHANNEL;
 
 			/*Initialize all variables globally*/
 			ADC_chain.Channel = Copy_chain->Channel;
@@ -272,7 +303,7 @@ void __vector_16 (void)
 {
 
 	/*Check ISR source*/
-	if(ADC_ISRSource == SINGLE_CHANNEL_ASYNCH)
+	if(ADC_ISRSource == SINGLE_CHANNEL)
 	{
 		/*Reading ADC result*/
 		if(ADC_RESOLUTION == TEN_BITS)
@@ -297,7 +328,7 @@ void __vector_16 (void)
 
 	}
 	/*ISR source is chain*/
-	else if (ADC_ISRSource == CHAIN_CHANNEL_ASYNCH)
+	else if (ADC_ISRSource == CHAIN_CHANNEL)
 	{
 		/*Read the current conversion*/
 #if ADC_RESOLUTION == TEN_BITS

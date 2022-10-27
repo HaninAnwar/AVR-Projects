@@ -91,4 +91,6 @@ u8 ADC_u8StartConversionAsynch(u8 Copy_u8Channel , u16 *Copy_p16Reading , void (
 
 u8 ADC_u8StartChainAsynch(Chain_t *Copy_chain);
 
+u8 ADC_u8StartChainsynch(Chain_t *Copy_chain);
+
 #endif
