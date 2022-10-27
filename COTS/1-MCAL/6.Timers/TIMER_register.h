@@ -10,6 +10,8 @@
 #ifndef  TIMER_REGISTER_H_
 #define  TIMER_REGISTER_H_
 
+/***	Timer0 Registers	***/
+
 #define  TCCR0				*((volatile u8 *)0x53) 	/*Timer0 control register*/
 #define  TCCR0_WGM00		6					   	/*Waveform generation modes bit0*/
 #define  TCCR0_WGM01		3					   	/*Waveform generation modes bit1*/
@@ -25,6 +27,11 @@
 
 #define TIMSK				*((volatile u8*)0x59)	/*Timer Mask*/
 #define TIMSK_OCIE0			1						/*Output compare interrupt enable*/
+#define TIMSK_TICIE1		5						/*Time input capture interrupt enable*/
+
+/***	Timer1 Registers 	***/
+
+#define TCNT1				*((volatile u16 *)0x4C)	/*Timer/Counter Register to store timer value*/
 
 /***	Timer1 Registers Channel A	***/
 
@@ -52,9 +59,30 @@
 #define TCCR1B_CS11			1						/*prescaler bit1*/
 #define TCCR1B_CS12			2						/*prescaler bit2*/
 
-#define TCCR1B_WGM12		3
-#define TCCR1B_WGM13		4
+#define TCCR1B_WGM12		3						/*Waveform generation modes bit2*/
+#define TCCR1B_WGM13		4						/*Waveform generation modes bit3*/
+
+#define TCCR1B_ICES			6						/*Input capture edge select*/
 
 #define OCR1B				*((volatile u16 *)0x48)	/*Output compare match register for B */
+
+/*** 	Timer2 Registers 	***/
+
+#define  TCCR2				*((volatile u8 *)0x45) 	/*Timer2 control register*/
+#define  TCCR2_WGM20		6					   	/*Waveform generation modes bit0*/
+#define  TCCR2_WGM21		3					   	/*Waveform generation modes bit1*/
+
+#define  TCCR2_CS20			0						/*prescaler bit0*/
+#define  TCCR2_CS21			1						/*prescaler bit1*/
+#define  TCCR2_CS22			2						/*prescaler bit2*/
+
+#define TCCR2_COM20			4						/*Compare Output Mode bit0*/
+#define TCCR2_COM21			5						/*Compare Output Mode bit1*/
+
+#define  OCR2				*((volatile u8*)0x43)	/*Output compare match register*/
+
+#define TIMSK_OCIE2			7						/*Output compare interrupt enable*/
+#define TIMSK_TICIE2		5						/*Time input capture interrupt enable*/
+
 
 #endif
