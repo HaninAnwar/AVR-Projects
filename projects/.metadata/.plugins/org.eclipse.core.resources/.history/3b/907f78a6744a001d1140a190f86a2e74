@@ -1,0 +1,51 @@
+#include "STD_TYPES.h"
+#include <util/delay.h>
+#include "MAPPING.h"
+
+#include "DIO_interface.h"
+#include "PORT_interface.h"
+#include "ADC_interface.h"
+
+#include "CLCD_interface.h"
+#include "SSD_interface.h"
+#include "KEYPAD_interface.h"
+#include "MOTOR_interface.h"
+
+void main(void)
+{
+	u8 Local_u8PressedKey,Local_u8CurrentDigit;
+	u8 Local_u8PassArr[4] = {0,0,0,0};
+
+	SSD_T *SSD1;
+	SSD1->Port = DIO_u8PORTB;
+	SSD1->EnablePort = DIO_u8PORTB;
+	SSD1->EnablePin = DIO_u8PIN7;
+	SSD1->ComType = SSD_u8COM_CATHODE;
+
+	/*Initialization*/
+	PORT_voidInit();
+	CLCD_voidInit();
+	SSD_u8Enable(SSD1);
+
+	Local_u8CurrentDigit = 0;
+
+	/*Welcome*/
+	CLCD_voidSendString("Welcome");
+	_delay_ms(3000);
+
+	/*User Registration*/
+	CLCD_voidSendCommand(1);
+	CLCD_voidSendString("Enter ID :");
+
+	do
+	{
+		Local_u8PressedKey = KPD_GetPressedKey();
+	}
+	while(Local_u8PressedKey == 0xff);
+
+	CLCD_voidWriteNumber(Local_u8PressedKey,1,Local_u8CurrentDigit++);
+	while(1)
+	{
+
+	}
+}

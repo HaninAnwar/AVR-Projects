@@ -1,0 +1,56 @@
+#include "STD_TYPES.h"
+
+#include "DIO_interface.h"
+
+#include "MOTOR_config.h"
+#include "MOTOR_interface.h"
+#include "MOTOR_private.h"
+
+
+u8 MOTOR_u8DCRotate(u8 Copy_u8Direction)
+{
+	u8 Local_u8ErrorState = OK;
+
+	if (Copy_u8Direction == MOTOR_CLK_WISE)
+	{
+		DIO_u8SetPinValue(MOTOR_DC_PORT,MOTOR_DC_PIN2,DIO_u8PIN_LOW);
+		DIO_u8SetPinValue(MOTOR_DC_PORT,MOTOR_DC_PIN1,DIO_u8PIN_HIGH);
+
+	}
+
+	else if(Copy_u8Direction == MOTOR_UNTI_CLK_WISE)
+	{
+		DIO_u8SetPinValue(MOTOR_DC_PORT,MOTOR_DC_PIN1,DIO_u8PIN_LOW);
+		DIO_u8SetPinValue(MOTOR_DC_PORT,MOTOR_DC_PIN2,DIO_u8PIN_HIGH);
+	}
+
+	else
+	{
+		Local_u8ErrorState = NOK;
+	}
+	return Local_u8ErrorState;
+}
+
+void MOTOR_voidDCStop(void)
+{
+	DIO_u8SetPinValue(MOTOR_DC_PORT,MOTOR_DC_PIN1,DIO_u8PIN_LOW);
+	DIO_u8SetPinValue(MOTOR_DC_PORT,MOTOR_DC_PIN2,DIO_u8PIN_LOW);
+}
+
+u8 MOTOR_u8StepperRotate(u8 Copy_u8Direction)
+{
+	u8 Local_u8ErrorState = OK;
+
+	DIO_u8SetPinValue(MOTOR_STEPPER_PORT,MOTOR_STEPPER_BLUE,DIO_u8PIN_LOW);
+	DIO_u8SetPinValue(MOTOR_STEPPER_PORT,MOTOR_STEPPER_PINK,DIO_u8PIN_HIGH);
+	DIO_u8SetPinValue(MOTOR_STEPPER_PORT,MOTOR_STEPPER_YELLOW,DIO_u8PIN_HIGH);
+	DIO_u8SetPinValue(MOTOR_STEPPER_PORT,MOTOR_STEPPER_ORANGE,DIO_u8PIN_HIGH);
+	_delay_ms(2);
+	DIO_u8SetPinValue(MOTOR_STEPPER_PORT,MOTOR_STEPPER_BLUE,DIO_u8PIN_HIGH);
+	DIO_u8SetPinValue(MOTOR_STEPPER_PORT,MOTOR_STEPPER_PINK,DIO_u8PIN_LOW);
+	DIO_u8SetPinValue(MOTOR_STEPPER_PORT,MOTOR_STEPPER_YELLOW,DIO_u8PIN_HIGH);
+	DIO_u8SetPinValue(MOTOR_STEPPER_PORT,MOTOR_STEPPER_ORANGE,DIO_u8PIN_HIGH);
+	_delay_ms(2);
+
+	return Local_u8ErrorState;
+}

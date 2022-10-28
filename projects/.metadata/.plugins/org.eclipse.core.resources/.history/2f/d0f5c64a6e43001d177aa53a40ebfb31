@@ -1,0 +1,56 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : MCAL         ************************/
+/************************ SWC    : TIMER          ************************/
+/************************ VERSION : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+
+#include "TIMER_register.h"
+#include "TIMER_config.h"
+#include "TIMER_private.h"
+#include "TIMER_interface.h"
+
+static void *(TIMER0_pvCallBackFunc)(void) = NULL;
+
+void TIMER0_voidInit(void)
+{
+	/*Choose compare match mode*/
+	CLR_BIT(TCCR0,TCCR0_WGM00);
+	SET_BIT(TCCR0,TCCR0_WGM01);
+
+
+	/*Enable compare match interrupt*/
+	SET_BIT(TIMSK,TIMSK_OCIE0);
+
+	/*Set comapre match value*/
+	OCR0 = 250;
+
+	/*Choose prescaler :division by 8*/
+	CLR_BIT(TCCR0,TCCR0_CS00);
+	SET_BIT(TCCR0,TCCR0_CS01);
+	CLR_BIT(TCCR0,TCCR0_CS02);
+}
+
+
+u8 TIMER0_u8SetCallBack(void (*Copy_pvCallBackFunc)(void))
+{
+	u8 Local_u8ErrorState = OK;
+
+	if(Copy_pvCallBackFunc != NULL)
+	{
+		TIMER0_pvCallBackFunc = Copy_pvCallBackFunc;
+	}
+
+	else
+	{
+		Local_u8ErrorState = NULL_POINTER;
+	}
+	return Local_u8ErrorState;
+
+}

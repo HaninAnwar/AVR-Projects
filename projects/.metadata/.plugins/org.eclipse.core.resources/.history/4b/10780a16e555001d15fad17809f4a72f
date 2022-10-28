@@ -1,0 +1,29 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : MCAL         ************************/
+/************************ SWC    : TIMER          ************************/
+/************************ VERSION : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+#ifndef  TIMER_PRIVATE_H_
+#define  TIMER_PRIVATE_H_
+
+#define NORMAL			0
+#define PHASE_CORRECT	1
+#define CTC				2
+#define FAST_PWM		3
+
+#define DISCONNECT		0
+#define PHASE_CORRECT	1
+#define PHASE_CORRECT	2
+#define PHASE_CORRECT	3
+#define PHASE_CORRECT	4
+#define PHASE_CORRECT	5
+#define PHASE_CORRECT	6
+#define PHASE_CORRECT	7
+#define PHASE_CORRECT	1
+#define PHASE_CORRECT	1
+
+#endif

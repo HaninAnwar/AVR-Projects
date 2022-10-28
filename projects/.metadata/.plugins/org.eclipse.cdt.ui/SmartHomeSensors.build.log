@@ -1,0 +1,20 @@
+09:41:11 **** Incremental Build of configuration Debug for project SmartHomeSensors ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 SmartHomeSensors.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   14976 bytes (45.7% Full)
+(.text + .data + .bootloader)
+
+Data:        420 bytes (20.5% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+09:41:12 Build Finished (took 790ms)
+

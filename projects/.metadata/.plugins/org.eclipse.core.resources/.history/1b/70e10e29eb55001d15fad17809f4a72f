@@ -1,0 +1,35 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : MCAL         ************************/
+/************************ SWC    : TIMER          ************************/
+/************************ VERSION : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+#ifndef  TIMER_PRIVATE_H_
+#define  TIMER_PRIVATE_H_
+
+#define NORMAL						0
+#define PHASE_CORRECT				1
+#define CTC							2
+#define FAST_PWM					3
+
+#define DISCONNECT					0
+#define TOGGLE						1
+#define CLEAR						2
+#define SET							3
+#define INVERTING_PWM				4
+#define NON_INVERTING_PWM			5
+
+
+#define DIV_BY_1					0
+#define DIV_BY_8					1
+#define DIV_BY_64					2
+#define DIV_BY_256					3
+#define DIV_BY_1024					4
+#define EXTERNAL_CLK_FALLING_EDGE	5
+#define EXTERNAL_CLK_RISING_EDGE	6
+
+
+#endif

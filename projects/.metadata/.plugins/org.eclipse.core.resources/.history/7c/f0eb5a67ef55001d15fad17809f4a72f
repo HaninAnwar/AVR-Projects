@@ -1,0 +1,286 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : MCAL         ************************/
+/************************ SWC    : TIMER          ************************/
+/************************ VERSION : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+
+#include "TIMER_register.h"
+#include "TIMER_config.h"
+#include "TIMER_private.h"
+#include "TIMER_interface.h"
+
+static void	(* TIMER_pvCallBackFunc[8])(void) = {NULL};
+
+
+u8 TIMER0_u8Init(u8 Copy_u8WaveMode , u8 Copy_u8CompereMode ,u8 Copy_u8Prescaler)
+{
+	u8 Local_u8ErrorState = OK;
+
+	/*Set waveform generation mode*/
+	switch(Copy_u8WaveMode)
+	{
+	case NORMAL : CLR_BIT(TCCR0,TCCR0_WGM00);CLR_BIT(TCCR0,TCCR0_WGM01);break;
+	case PHASE_CORRECT :SET_BIT(TCCR0,TCCR0_WGM00);CLR_BIT(TCCR0,TCCR0_WGM01);break;
+	case CTC : CLR_BIT(TCCR0,TCCR0_WGM00);SET_BIT(TCCR0,TCCR0_WGM01);break;
+	case FAST_PWM : SET_BIT(TCCR0,TCCR0_WGM00);SET_BIT(TCCR0,TCCR0_WGM01);break;
+	default : Local_u8ErrorState = NOK;
+	}
+
+	/*Set Output compare mode*/
+	switch(Copy_u8CompereMode)
+	{
+	/*Normal mode*/
+	case DISCONNECT : CLR_BIT(TCCR0,TCCR0_COM00);CLR_BIT(TCCR0,TCCR0_COM01);break;
+	case TOGGLE : SET_BIT(TCCR0,TCCR0_COM00);CLR_BIT(TCCR0,TCCR0_COM01);break;
+	case CLEAR : CLR_BIT(TCCR0,TCCR0_COM00);SET_BIT(TCCR0,TCCR0_COM01);break;
+	case SET : SET_BIT(TCCR0,TCCR0_COM00);SET_BIT(TCCR0,TCCR0_COM01);break;
+
+	/*Fast PWM OR Phase Correct mode */
+	case INVERTING_PWM : SET_BIT(TCCR0,TCCR0_COM00);SET_BIT(TCCR0,TCCR0_COM01);break;
+	case NON_INVERTING_PWM : CLR_BIT(TCCR0,TCCR0_COM00);SET_BIT(TCCR0,TCCR0_COM01);break;
+
+	default : Local_u8ErrorState = NOK;
+	}
+
+	/*Set prescaler */
+	switch (Copy_u8Prescaler)
+	{
+	case DIV_BY_1 :
+		SET_BIT(TCCR0,TCCR0_CS00);
+		CLR_BIT(TCCR0,TCCR0_CS01);
+		CLR_BIT(TCCR0,TCCR0_CS02);
+		break;
+
+	case DIV_BY_8 :
+		CLR_BIT(TCCR0,TCCR0_CS00);
+		SET_BIT(TCCR0,TCCR0_CS01);
+		CLR_BIT(TCCR0,TCCR0_CS02);
+		break;
+
+	case DIV_BY_64 :
+		SET_BIT(TCCR0,TCCR0_CS00);
+		SET_BIT(TCCR0,TCCR0_CS01);
+		CLR_BIT(TCCR0,TCCR0_CS02);
+		break;
+
+	case DIV_BY_256 :
+		CLR_BIT(TCCR0,TCCR0_CS00);
+		CLR_BIT(TCCR0,TCCR0_CS01);
+		SET_BIT(TCCR0,TCCR0_CS02);
+		break;
+
+	case DIV_BY_1024 :
+		SET_BIT(TCCR0,TCCR0_CS00);
+		CLR_BIT(TCCR0,TCCR0_CS01);
+		SET_BIT(TCCR0,TCCR0_CS02);
+		break;
+
+	case EXTERNAL_CLK_FALLING_EDGE :
+		CLR_BIT(TCCR0,TCCR0_CS00);
+		SET_BIT(TCCR0,TCCR0_CS01);
+		SET_BIT(TCCR0,TCCR0_CS02);
+		break;
+
+	case EXTERNAL_CLK_RISING_EDGE :
+		SET_BIT(TCCR0,TCCR0_CS00);
+		SET_BIT(TCCR0,TCCR0_CS01);
+		SET_BIT(TCCR0,TCCR0_CS02);
+		break;
+	}
+	/*Enable compare match interrupt*/
+	SET_BIT(TIMSK,TIMSK_OCIE0);
+
+}
+
+void TIMER0_voidSetCompMatchVal(u8 Copy_u8Value)
+{
+	OCR0 = Copy_u8Value;
+}
+
+void TIMER1_voidInit(void)
+{
+	//	/*Choose Compare o/p mode : Normal mode*/
+	//	CLR_BIT(TCCR1A,TCCR1A_COMA0);
+	//	CLR_BIT(TCCR1A,TCCR1A_COMA1);
+
+	/*Choose waveform generation mode : Normal*/
+	CLR_BIT(TCCR1A,TCCR1A_WGM10);
+	CLR_BIT(TCCR1A,TCCR1A_WGM11);
+	CLR_BIT(TCCR1B,TCCR1B_WGM12);
+	CLR_BIT(TCCR1B,TCCR1B_WGM13);
+
+	/*Prescaler : division by 8*/
+	CLR_BIT(TCCR1B,TCCR1B_CS10);
+	SET_BIT(TCCR1B,TCCR1B_CS11);
+	CLR_BIT(TCCR1B,TCCR1B_CS12);
+
+}
+
+u8 TIMER1_u8SetICR(u16 Copy_u16Top)
+{
+	ICR1 = Copy_u16Top;
+}
+
+u8 TIMER1_u8SetChannelACompMatchVal(u16 Copy_u16Value)
+{
+	OCR1A = Copy_u16Value;
+}
+
+void TIMER1_voidSetTimerValue(u16 Copy_u16Value)
+{
+	TCNT1 = Copy_u16Value;
+}
+
+u16 TIMER1_u16ReadTimerValue(void)
+{
+	return TCNT1;
+}
+
+void ICU_voidInit(void)
+{
+
+	/*Select triggered edge : rising edge*/
+	SET_BIT(TCCR1B,TCCR1B_ICES);
+
+	/*Enable ICU interrupt*/
+	SET_BIT(TIMSK,TIMSK_TICIE1);
+}
+
+u8 ICU_voidSetTiggerEdge(u8 Copy_u8Edge)
+{
+	u8 Local_u8ErrorState = OK;
+
+	if(Copy_u8Edge == ICU_RISING_EDGE)
+	{
+		SET_BIT(TCCR1B,TCCR1B_ICES);
+	}
+	else if (Copy_u8Edge == ICU_FALLING_EDGE)
+	{
+		CLR_BIT(TCCR1B,TCCR1B_ICES);
+	}
+	else
+	{
+		Local_u8ErrorState = NOK;
+	}
+	return Local_u8ErrorState;
+}
+
+u8 ICU_voidEnableControl(u8 Copy_u8Enable)
+{
+	u8 Local_u8ErrorState = OK;
+
+	if(Copy_u8Enable == ICU_INT_ENABLE)
+	{
+		SET_BIT(TIMSK,TIMSK_TICIE1);
+	}
+	else if(Copy_u8Enable == ICU_INT_DISABLE)
+	{
+		CLR_BIT(TIMSK,TIMSK_TICIE1);
+	}
+	else
+	{
+		Local_u8ErrorState = NOK;
+	}
+	return Local_u8ErrorState;
+}
+
+u16 ICU_u16ReadingICU(void)
+{
+	return ICR1;
+}
+
+u8 TIMER_u8SetCallBack(u8 Copy_u8INT_ID,void (*Copy_pvCallBackFunc)(void))
+{
+	u8 Local_u8ErrorState = OK;
+
+	if(Copy_pvCallBackFunc != NULL)
+	{
+		TIMER_pvCallBackFunc[Copy_u8INT_ID] = Copy_pvCallBackFunc;
+	}
+	else
+	{
+		Local_u8ErrorState = NULL_POINTER;
+	}
+
+	return Local_u8ErrorState;
+}
+
+void __vector_4 (void) __attribute__ ((signal));
+void __vector_4 (void)
+{
+	if(TIMER_pvCallBackFunc[TIMER2_OUTPUT_COM_INT] != NULL)
+	{
+		TIMER_pvCallBackFunc[TIMER2_OUTPUT_COM_INT]();
+	}
+}
+
+void __vector_5 (void) __attribute__ ((signal));
+void __vector_5 (void)
+{
+	if(TIMER_pvCallBackFunc[TIMER2_OVERFLOW_INT] != NULL)
+	{
+		TIMER_pvCallBackFunc[TIMER2_OVERFLOW_INT]();
+	}
+}
+
+void __vector_6 (void) __attribute__ ((signal));
+void __vector_6 (void)
+{
+	if(TIMER_pvCallBackFunc[TIMER1_ICU_INT] != NULL)
+	{
+		TIMER_pvCallBackFunc[TIMER1_ICU_INT]();
+	}
+}
+
+void __vector_7 (void) __attribute__ ((signal));
+void __vector_7 (void)
+{
+	if(TIMER_pvCallBackFunc[TIMER1_OUTPUT_COM_A_INT] != NULL)
+	{
+		TIMER_pvCallBackFunc[TIMER1_OUTPUT_COM_A_INT]();
+	}
+}
+
+void __vector_8 (void) __attribute__ ((signal));
+void __vector_8 (void)
+{
+	if(TIMER_pvCallBackFunc[TIMER1_OUTPUT_COM_B_INT] != NULL)
+	{
+		TIMER_pvCallBackFunc[TIMER1_OUTPUT_COM_B_INT]();
+	}
+}
+
+void __vector_9 (void) __attribute__ ((signal));
+void __vector_9 (void)
+{
+	if(TIMER_pvCallBackFunc[TIMER1_OVERFLOW_INT] != NULL)
+	{
+		TIMER_pvCallBackFunc[TIMER1_OVERFLOW_INT]();
+	}
+}
+
+void __vector_10 (void)	__attribute__((signal));
+void __vector_10 (void)
+{
+	if(TIMER_pvCallBackFunc[TIMER0_OUTPUT_COM_INT] != NULL)
+	{
+		TIMER_pvCallBackFunc[TIMER0_OUTPUT_COM_INT]();
+	}
+}
+
+void __vector_11 (void)	__attribute__((signal));
+void __vector_11 (void)
+{
+	if(TIMER_pvCallBackFunc[TIMER0_OVERFLOW_INT] != NULL)
+	{
+		TIMER_pvCallBackFunc[TIMER0_OVERFLOW_INT]();
+	}
+}
+

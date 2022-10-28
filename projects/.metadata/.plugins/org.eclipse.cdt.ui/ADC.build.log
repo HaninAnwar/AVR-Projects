@@ -1,15 +1,25 @@
-15:20:08 **** Incremental Build of configuration Debug for project ADC ****
+13:20:22 **** Incremental Build of configuration Debug for project ADC ****
 make all 
+Building file: ../ADC_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ADC_program.d" -MT"ADC_program.o" -c -o "ADC_program.o" "../ADC_program.c"
+../ADC_program.c: In function 'ADC_u8StartConversionAsynch':
+../ADC_program.c:194: warning: assignment from incompatible pointer type
+../ADC_program.c: In function 'ADC_u8StartChainsynch':
+../ADC_program.c:246: warning: passing argument 2 of 'ADC_u8StartConversionSynch' makes pointer from integer without a cast
+../ADC_program.c:224: warning: unused variable 'Local_u8Counter'
+../ADC_program.c:249: warning: control reaches end of non-void function
+Finished building: ../ADC_program.c
+ 
 Building file: ../main.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
 In file included from ../main.c:4:
 f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
-../main.c:14: warning: return type of 'main' is not 'int'
+../main.c:15: warning: return type of 'main' is not 'int'
 ../main.c: In function 'main':
-../main.c:27: warning: passing argument 3 of 'ADC_u8StartConversionAsynch' from incompatible pointer type
-../main.c:17: warning: unused variable 'Local_u8Temp'
-../main.c:17: warning: unused variable 'Local_u8MilliVolt'
+../main.c:18: warning: unused variable 'Local_u8Temp'
+../main.c:18: warning: unused variable 'Local_u8MilliVolt'
 Finished building: ../main.c
  
 Building target: ADC.elf
@@ -31,15 +41,15 @@ AVR Memory Usage
 ----------------
 Device: atmega32
 
-Program:    7234 bytes (22.1% Full)
+Program:    8122 bytes (24.8% Full)
 (.text + .data + .bootloader)
 
-Data:         15 bytes (0.7% Full)
+Data:         26 bytes (1.3% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
 
-15:20:13 Build Finished (took 4s.994ms)
+13:20:27 Build Finished (took 4s.315ms)
 

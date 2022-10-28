@@ -114,7 +114,7 @@
 <definedSymbol symbol="__AVR__=1"/>
 <definedSymbol symbol="AVR=1"/>
 <definedSymbol symbol="__AVR_ARCH__=5"/>
-<definedSymbol symbol="__AVR_ATmega16__=1"/>
+<definedSymbol symbol="__AVR_ATmega32__=1"/>
 <definedSymbol symbol="__AVR_HAVE_MOVW__=1"/>
 <definedSymbol symbol="__AVR_HAVE_LPMX__=1"/>
 <definedSymbol symbol="__AVR_ENHANCED__=1"/>
@@ -122,9 +122,7 @@
 <definedSymbol symbol="__AVR_MEGA__=1"/>
 <definedSymbol symbol="__AVR_HAVE_JMP_CALL__=1"/>
 <definedSymbol symbol="__AVR_2_BYTE_PC__=1"/>
-<definedSymbol symbol="F_CPU=1000000UL"/>
 <definedSymbol symbol="F_CPU=8000000UL"/>
-<definedSymbol symbol="__AVR_ATmega32__=1"/>
 </collector>
 </instance>
 <instance id="de.innot.avreclipse.configuration.app.release.906253577;de.innot.avreclipse.configuration.app.release.906253577.;de.innot.avreclipse.tool.compiler.winavr.app.release.1302844375;de.innot.avreclipse.compiler.winavr.input.1275589241">

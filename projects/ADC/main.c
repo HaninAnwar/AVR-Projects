@@ -11,6 +11,7 @@
 void NotificationFunc(void);
 
 u16 App_u16ADCReading;
+u16 *Local_u16Result;
 void main(void)
 {
 
@@ -22,10 +23,21 @@ void main(void)
 
 	GIE_voidEnable();
 
+	u8 Local_u8Channels[2] = {CHANNEL_ADC0,CHANNEL_ADC1};
+
+	Chain_t *Chain1;
+	Chain1->Channel = Local_u8Channels;
+	Chain1->Result = Local_u16Result;
+	Chain1->NotificationFunc = &NotificationFunc;
+	Chain1->Size = 2;
+
+
 	while(1)
 	{
-		ADC_u8StartConversionAsynch(CHANNEL_ADC0,&App_u16ADCReading,&NotificationFunc);
-//		CLCD_voidSendCommand(1);
+//		ADC_u8StartConversionAsynch(CHANNEL_ADC0,&App_u16ADCReading,&NotificationFunc);
+//		ADC_u8StartChainAsynch(Chain1);
+		ADC_u8StartChainsynch(Chain1);
+		//		CLCD_voidSendCommand(1);
 //
 //		Local_u8Reading = ADC_u8GetChannelReading(CHANNEL_ADC0);
 //		//		Local_u8MilliVolt = ((u32)Local_u8Reading*5000UL)/256UL;
@@ -81,5 +93,7 @@ void main(void)
 
 void NotificationFunc(void)
 {
-	DIO_u8SetPortValue(DIO_u8PORTB,App_u16ADCReading);
+//	DIO_u8SetPortValue(DIO_u8PORTB,App_u16ADCReading);
+	CLCD_voidWriteNumber(1,0,0);
+	_delay_ms(1000);
 }

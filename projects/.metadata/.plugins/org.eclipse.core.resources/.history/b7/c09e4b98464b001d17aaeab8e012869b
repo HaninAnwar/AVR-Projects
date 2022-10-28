@@ -1,0 +1,45 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : MCAL         ************************/
+/************************ SWC    : TIMER          ************************/
+/************************ VERSION : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+#ifndef  TIMER_INTERFACE_H_
+#define  TIMER_INTERFACE_H_
+
+
+#define ICU_RISING_EDGE		1
+#define ICU_FALLING_EDGE	2
+
+#define ICU_INT_ENABLE		1
+#define ICU_INT_DISABLE		2
+
+void TIMER0_voidInit(void);
+
+void TIMER0_voidSetCompMatchVal(u8 Copy_u8Value);
+
+u8 TIMER0_u8SetCallBack(void (*Copy_pvCallBackFunc)(void));
+
+
+void TIMER1_voidInit(void);
+
+u8 TIMER1_u8SetICR(u16 Copy_u16Top);
+
+u8 TIMER1_u8SetChannelACompMatchVal(u16 Copy_u16Value);
+
+void TIMER1_voidSetTimerValue(u16 Copy_u16Value);
+
+u16 TIMER1_u16ReadTimerValue(void);
+
+u8 ICU_voidSetTiggerEdge(u8 Copy_u8Edge);
+
+u8 ICU_voidEnableControl(u8 Copy_u8Enable);
+
+u16 ICU_u16ReadingICU(void);
+
+u8	ICU_u8SetCallBackFunc(void (* Copy_pvCallBackFunc)(void));
+
+#endif

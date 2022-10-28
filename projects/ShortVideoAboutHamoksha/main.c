@@ -19,8 +19,6 @@ void main(void)
 	CLCD_voidInit();
 
 
-//	CLCD_voidSendString("Hanin");
-
 	while(1)
 	{
 

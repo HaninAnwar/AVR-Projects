@@ -1,0 +1,52 @@
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include <util/delay.h>
+
+#include "DIO_interface.h"
+#include "PORT_interface.h"
+#include "TIMER_interface.h"
+#include "GIE_interface.h"
+
+void PWM(void);
+
+void main(void)
+{
+	PORT_voidInit();
+	TIMER0_voidInit();
+	TIMER0_u8SetCallBack(&PWM);
+	GIE_voidEnable();
+	while(1)
+	{
+//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN7,DIO_u8PIN_HIGH);
+//		_delay_us(150);
+//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN7,DIO_u8PIN_LOW);
+//		_delay_us(150);
+
+	}
+
+}
+
+void PWM(void)
+{
+	static u8 Local_u8Counter = 0;
+	Local_u8Counter++;
+
+	if(Local_u8Counter == 5)
+	{
+		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN7,DIO_u8PIN_LOW);
+	}
+	else if(Local_u8Counter == 10)
+	{
+		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN6,DIO_u8PIN_LOW);
+
+	}
+	else if(Local_u8Counter == 15)
+	{
+		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN5,DIO_u8PIN_LOW);
+	}
+	else if(Local_u8Counter == 20)
+	{
+		Local_u8Counter = 0;
+		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN7,DIO_u8PIN_HIGH);
+	}
+}

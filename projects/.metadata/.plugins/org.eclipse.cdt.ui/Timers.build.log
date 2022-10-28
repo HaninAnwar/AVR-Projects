@@ -1,0 +1,23 @@
+16:05:16 **** Incremental Build of configuration Debug for project Timers ****
+make all 
+Building file: ../TIMER_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"TIMER_program.d" -MT"TIMER_program.o" -c -o "TIMER_program.o" "../TIMER_program.c"
+../TIMER_program.c: In function 'TIMER0_u8Init':
+../TIMER_program.c:65: error: duplicate case value
+../TIMER_program.c:62: error: previously used here
+../TIMER_program.c:66: error: duplicate case value
+../TIMER_program.c:61: error: previously used here
+../TIMER_program.c: In function 'TIMER2_u8Init':
+../TIMER_program.c:121: error: duplicate case value
+../TIMER_program.c:118: error: previously used here
+../TIMER_program.c:122: error: duplicate case value
+../TIMER_program.c:117: error: previously used here
+../TIMER_program.c: In function 'TIMER1_u8SetICR':
+../TIMER_program.c:209: warning: control reaches end of non-void function
+../TIMER_program.c: In function 'TIMER1_u8SetChannelACompMatchVal':
+../TIMER_program.c:214: warning: control reaches end of non-void function
+make: *** [TIMER_program.o] Error 1
+
+16:05:17 Build Finished (took 623ms)
+
