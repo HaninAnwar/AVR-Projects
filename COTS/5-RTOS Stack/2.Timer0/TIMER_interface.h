@@ -1,7 +1,7 @@
 /***********************************************************************/
 /***********************************************************************/
 /************************ AUTHER : Hanin Anwar  ************************/
-/************************ LAYER  : MCAL         ************************/
+/************************ LAYER  : RTOS_Stack         ************************/
 /************************ SWC    : TIMER          ************************/
 /************************ VERSION : 1.00         ************************/
 /***********************************************************************/
@@ -58,33 +58,10 @@
 #define TIMER_EXT_CLK_FALLING_EDGE	6
 #define TIMER_EXT_CLK_RISING_EDGE	7
 
-#define TIMER1_CHANNEL_A			0
-#define TIMER1_CHANNEL_B			1
 
 u8 TIMER0_u8Init(u8 Copy_u8WaveMode , u8 Copy_u8CompereMode ,u8 Copy_u8Prescaler);
 
-u8 TIMER1_u8Init(u8 Copy_u8Channel , u8 Copy_u8WaveMode , u8 Copy_u8CompereMode ,u8 Copy_u8Prescaler);
-
-u8 TIMER2_u8Init(u8 Copy_u8WaveMode , u8 Copy_u8CompereMode ,u8 Copy_u8Prescaler);
-
 void TIMER0_voidSetCompMatchVal(u8 Copy_u8Value);
-
-
-void TIMER1_voidSetICR(u16 Copy_u16Top);
-
-void TIMER1_voidSetChannelACompMatchVal(u16 Copy_u16Value);
-
-void TIMER1_voidSetTimerValue(u16 Copy_u16Value);
-
-u16 TIMER1_u16ReadTimerValue(void);
-
-void ICU_voidInit(void);
-
-u8 ICU_u8SetTiggerEdge(u8 Copy_u8Edge);
-
-u8 ICU_u8EnableControl(u8 Copy_u8Enable);
-
-u16 ICU_u16ReadingICU(void);
 
 u8 TIMER_u8SetCallBack(u8 Copy_u8INT_ID,void (*Copy_pvCallBackFunc)(void));
 

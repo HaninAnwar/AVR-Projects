@@ -1,19 +1,25 @@
 /***********************************************************************/
 /***********************************************************************/
 /************************ AUTHER : Hanin Anwar  ************************/
-/************************ LAYER  : LIB          ************************/
+/************************ LAYER  : RTOS Stack         ************************/
+/************************ SWC    : GIE          ************************/
 /************************ VERSION : 1.00         ************************/
 /***********************************************************************/
 /***********************************************************************/
 
-
 #include "STD_TYPES.h"
-#include "MAPPING.h"
+#include "BIT_MATH.h"
 
-s32 Mapping(s32 Copy_s32InputMin,s32 Copy_s32InputMax,s32 Copy_s32OutputMin,s32 Copy_s32OutputMax,s32 Copy_s32InputValue)
+#include "GIE_interface.h"
+#include "GIE_register.h"
+
+void GIE_voidEnable(void)
 {
-	s32 Local_s32MappedValue;
-	Local_s32MappedValue = (((Copy_s32InputValue - Copy_s32InputMin)*(Copy_s32OutputMax - Copy_s32OutputMin))/(Copy_s32InputMax - Copy_s32InputMin)) + Copy_s32InputMin;
-
-	return Local_s32MappedValue;
+    SET_BIT(SREG,SREG_I);
 }
+
+void GIE_voidDisable(void)
+{
+    CLR_BIT(SREG,SREG_I);
+}
+

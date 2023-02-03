@@ -29,6 +29,10 @@ u8 TIMER0_u8Init(u8 Copy_u8WaveMode , u8 Copy_u8CompereMode ,u8 Copy_u8Prescaler
 	case NORMAL :
 		CLR_BIT(TCCR0,TCCR0_WGM00);
 		CLR_BIT(TCCR0,TCCR0_WGM01);
+
+		/*Enable overflow interrupt*/
+		SET_BIT(TIMSK,TIMSK_TOIE0);
+
 		break;
 
 	case PHASE_CORRECT :
@@ -74,6 +78,10 @@ u8 TIMER1_u8Init(u8 Copy_u8Channel , u8 Copy_u8WaveMode , u8 Copy_u8CompereMode 
 		CLR_BIT(TCCR1A,TCCR1A_WGM11);
 		CLR_BIT(TCCR1B,TCCR1B_WGM12);
 		CLR_BIT(TCCR1B,TCCR1B_WGM13);
+
+		/*Enable overflow interrupt*/
+		SET_BIT(TIMSK,TIMSK_TOIE1);
+
 		break;
 
 	case CTC :
@@ -81,6 +89,24 @@ u8 TIMER1_u8Init(u8 Copy_u8Channel , u8 Copy_u8WaveMode , u8 Copy_u8CompereMode 
 		CLR_BIT(TCCR1A,TCCR1A_WGM11);
 		SET_BIT(TCCR1B,TCCR1B_WGM12);
 		CLR_BIT(TCCR1B,TCCR1B_WGM13);
+
+		/*Enable output Compare interrupt*/
+		if (Copy_u8Channel == TIMER1_CHANNEL_A)
+		{
+			SET_BIT(TIMSK,TIMSK_OCIE1A);
+
+		}
+		else if (Copy_u8Channel == TIMER1_CHANNEL_B)
+		{
+			SET_BIT(TIMSK,TIMSK_OCIE1B);
+
+		}
+
+		else
+		{
+			Local_u8Errorstate = NOK;
+		}
+
 		break;
 
 	case PHASE_CORRECT :
@@ -115,16 +141,16 @@ u8 TIMER1_u8Init(u8 Copy_u8Channel , u8 Copy_u8WaveMode , u8 Copy_u8CompereMode 
 	{
 		TCCR1B &= TIMER1_COM_MASK_B;
 		TCCR1B |= Copy_u8CompereMode << 4;
-
-		/*Set prescalre*/
-		TCCR1B &= TIMER_PRESCALER_MASK;
-		TCCR1B |= Copy_u8Prescaler;
 	}
 
 	else
 	{
 		Local_u8Errorstate = NOK;
 	}
+
+	/*Set prescalre*/
+	TCCR1B &= TIMER_PRESCALER_MASK;
+	TCCR1B |= Copy_u8Prescaler;
 
 	return Local_u8Errorstate;
 }
@@ -140,6 +166,9 @@ u8 TIMER2_u8Init(u8 Copy_u8WaveMode , u8 Copy_u8CompereMode ,u8 Copy_u8Prescaler
 	case NORMAL :
 		CLR_BIT(TCCR2,TCCR2_WGM20);
 		CLR_BIT(TCCR2,TCCR2_WGM21);
+
+		/*Enable overflow interrupt*/
+		SET_BIT(TIMSK,TIMSK_TOIE2);
 		break;
 
 	case PHASE_CORRECT :
@@ -179,12 +208,12 @@ void TIMER0_voidSetCompMatchVal(u8 Copy_u8Value)
 	OCR0 = Copy_u8Value;
 }
 
-u8 TIMER1_u8SetICR(u16 Copy_u16Top)
+void TIMER1_voidSetICR(u16 Copy_u16Top)
 {
 	ICR1 = Copy_u16Top;
 }
 
-u8 TIMER1_u8SetChannelACompMatchVal(u16 Copy_u16Value)
+void TIMER1_voidSetChannelACompMatchVal(u16 Copy_u16Value)
 {
 	OCR1A = Copy_u16Value;
 }
@@ -209,7 +238,7 @@ void ICU_voidInit(void)
 	SET_BIT(TIMSK,TIMSK_TICIE1);
 }
 
-u8 ICU_voidSetTiggerEdge(u8 Copy_u8Edge)
+u8 ICU_u8SetTiggerEdge(u8 Copy_u8Edge)
 {
 	u8 Local_u8ErrorState = OK;
 
@@ -228,7 +257,7 @@ u8 ICU_voidSetTiggerEdge(u8 Copy_u8Edge)
 	return Local_u8ErrorState;
 }
 
-u8 ICU_voidEnableControl(u8 Copy_u8Enable)
+u8 ICU_u8EnableControl(u8 Copy_u8Enable)
 {
 	u8 Local_u8ErrorState = OK;
 

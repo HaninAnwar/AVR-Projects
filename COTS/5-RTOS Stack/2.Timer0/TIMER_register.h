@@ -1,7 +1,7 @@
 /***********************************************************************/
 /***********************************************************************/
 /************************ AUTHER : Hanin Anwar  ************************/
-/************************ LAYER  : MCAL         ************************/
+/************************ LAYER  : RTOS_Stack         ************************/
 /************************ SWC    : TIMER          ************************/
 /************************ VERSION : 1.00         ************************/
 /***********************************************************************/
@@ -23,11 +23,11 @@
 #define TCCR0_COM00			4						/*Compare Output Mode bit0*/
 #define TCCR0_COM01			5						/*Compare Output Mode bit1*/
 
-#define  TIMSK_TOIE0		0						/*Timer Overflow Interrupt Enable*/
-#define  TIMSK_OCIE0		1						/*Timer Output Compare Match Interrupt Enable*/
-
 #define  OCR0				*((volatile u8*)0x5C)	/*Output compare match register*/
 
+#define TIMSK				*((volatile u8*)0x59)	/*Timer Mask*/
+#define TIMSK_OCIE0			1						/*Output compare interrupt enable*/
+#define TIMSK_TICIE1		5						/*Time input capture interrupt enable*/
 
 /***	Timer1 Registers 	***/
 
@@ -44,11 +44,6 @@
 
 #define TCCR1A_COMA0		6						/*Compare Output Mode bit0*/
 #define TCCR1A_COMA1		7						/*Compare Output Mode bit1*/
-
-#define TIMSK				*((volatile u8*)0x59)	/*Timer Mask*/
-#define TIMSK_TOIE1			2						/*Timer Overflow Interrupt Enable*/
-#define TIMSK_OCIE1A		4						/*Timer Output Compare A Match Interrupt Enable*/
-#define TIMSK_TICIE1		5						/*Time input capture interrupt enable*/
 
 #define OCR1A				*((volatile u16 *)0x4A)	/*Output compare match register*/
 
@@ -69,11 +64,7 @@
 
 #define TCCR1B_ICES			6						/*Input capture edge select*/
 
-#define TIMSK_OCIE1B		3						/*Timer Output Compare B Match Interrupt Enable*/
-
 #define OCR1B				*((volatile u16 *)0x48)	/*Output compare match register for B */
-
-
 
 /*** 	Timer2 Registers 	***/
 
@@ -90,8 +81,8 @@
 
 #define  OCR2				*((volatile u8*)0x43)	/*Output compare match register*/
 
-#define TIMSK_TOIE2		6						/*Timer2 Overflow Interrupt Enable*/
 #define TIMSK_OCIE2			7						/*Output compare interrupt enable*/
+#define TIMSK_TICIE2		5						/*Time input capture interrupt enable*/
 
 
 #endif

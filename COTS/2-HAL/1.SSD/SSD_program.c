@@ -10,7 +10,7 @@
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 
-#include "DIO_registers.h"
+#include "DIO_register.h"
 #include "DIO_interface.h"
 
 #include "SSD_interface.h"
