@@ -1,0 +1,41 @@
+18:39:18 **** Build of configuration Debug for project Ultrasonic ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:2:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:13: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: Ultrasonic.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Ultrasonic.map -mmcu=atmega32 -o "Ultrasonic.elf"  ./CLCD_program.o ./DIO_program.o ./GIE_program.o ./PORT_program.o ./TIMER_program.o ./ULTSONC_program.o ./main.o   
+Finished building target: Ultrasonic.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Ultrasonic.elf  >"Ultrasonic.lss"
+Finished building: Ultrasonic.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Ultrasonic.elf  "Ultrasonic.hex"
+Finished building: Ultrasonic.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Ultrasonic.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    9702 bytes (29.6% Full)
+(.text + .data + .bootloader)
+
+Data:         35 bytes (1.7% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+18:39:19 Build Finished (took 1s.78ms)
+

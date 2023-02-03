@@ -1,0 +1,43 @@
+15:33:18 **** Build of configuration Debug for project Mine Detector ****
+make all 
+Building file: ../DIO_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"DIO_program.d" -MT"DIO_program.o" -c -o "DIO_program.o" "../DIO_program.c"
+Finished building: ../DIO_program.c
+ 
+Building file: ../EXTI_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"EXTI_program.d" -MT"EXTI_program.o" -c -o "EXTI_program.o" "../EXTI_program.c"
+Finished building: ../EXTI_program.c
+ 
+Building file: ../GIE_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"GIE_program.d" -MT"GIE_program.o" -c -o "GIE_program.o" "../GIE_program.c"
+Finished building: ../GIE_program.c
+ 
+Building file: ../MOTOR_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MOTOR_program.d" -MT"MOTOR_program.o" -c -o "MOTOR_program.o" "../MOTOR_program.c"
+In file included from ../MOTOR_program.c:2:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../MOTOR_program.c
+ 
+Building file: ../PORT_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"PORT_program.d" -MT"PORT_program.o" -c -o "PORT_program.o" "../PORT_program.c"
+Finished building: ../PORT_program.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c:11: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: Mine Detector.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Mine Detector.map -mmcu=atmega32 -o "Mine Detector.elf"  ./DIO_program.o ./EXTI_program.o ./GIE_program.o ./MOTOR_program.o ./PORT_program.o ./main.o   
+avr-gcc.exe: Detector.map: No such file or directory
+make: *** [Mine Detector.elf] Error 1
+
+15:33:19 Build Finished (took 1s.635ms)
+

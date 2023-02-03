@@ -1,0 +1,41 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar  ************************/
+/************************ LAYER  : HAL       	***********************/
+/************************ SWC    : ULTRASNOIC   ************************/
+/************************ VERSION : 1.00        ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+#include "STD_TYPES.h"
+
+#include "ULTSONC_config.h"
+#include "ULTSONC_interface.h"
+#include "ULTSONC_private.h"
+
+#include "TIMER_interface.h"
+
+static u16 ULTSONC_PulseWedth = 0;
+static u16 ULTSONC_u16Distance = 0;
+static u8  ULTSONC_ObstecalFlag = 0;
+
+u8 ULTSONC_u16GetDistance(u16 *Copy_u16Distance)
+{
+	u8 Local_u8ErrorState = OK;
+
+	/*Initialize timer0 for generate trigger pulse each 1ms*/
+		TIMER0_u8Init(NORMAL,DISCONNECT,TIMER_DIV_BY_1);
+
+		/*Timer1 for echo pulse calculation*/
+		TIMER1_u8Init(TIMER1_CHANNEL_A,NORMAL,DISCONNECT,TIMER_DIV_BY_1);
+
+		TIMER_u8SetCallBack(TIMER0_OVERFLOW_INT,&Ultrasonic_Trigger);
+
+		TIMER_u8SetCallBack(TIMER1_ICU_INT,&Ultrasonic_Echo);
+
+		GIE_voidEnable();
+
+
+	return Local_u8ErrorState;
+
+}

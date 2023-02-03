@@ -1,0 +1,31 @@
+#include "STD_TYPES.h"
+
+#include "DIO_interface.h"
+#include "PORT_interface.h"
+
+#include "TIMER_interface.h"
+#include "GIE_interface.h"
+#include "RTOS_interface.h"
+
+void LED1(void);
+void LED2(void);
+void LED3(void);
+
+void main(void)
+{
+	PORT_voidInit();
+	RTOS_voidCreatTask(0,1,&LED1);
+	RTOS_voidCreatTask(1,2,&LED1);
+	RTOS_voidCreatTask(2,3,&LED3);
+
+
+	while(1)
+	{
+		RTOS_voidStart();
+	}
+}
+
+void LED1(void)
+{
+
+}

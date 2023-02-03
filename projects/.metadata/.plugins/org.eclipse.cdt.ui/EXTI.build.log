@@ -1,4 +1,4 @@
-16:05:15 **** Incremental Build of configuration Debug for project EXTI ****
+10:10:53 **** Incremental Build of configuration Debug for project EXTI ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega32 EXTI.elf
@@ -16,5 +16,5 @@ Data:        270 bytes (13.2% Full)
 Finished building: sizedummy
  
 
-16:05:16 Build Finished (took 415ms)
+10:10:54 Build Finished (took 1s.381ms)
 

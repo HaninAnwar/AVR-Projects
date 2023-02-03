@@ -1,0 +1,20 @@
+03:00:27 **** Incremental Build of configuration Debug for project Servo ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Servo.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   15792 bytes (48.2% Full)
+(.text + .data + .bootloader)
+
+Data:        300 bytes (14.6% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+03:00:27 Build Finished (took 563ms)
+

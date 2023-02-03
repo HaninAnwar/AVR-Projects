@@ -1,0 +1,20 @@
+18:50:35 **** Incremental Build of configuration Debug for project Mine_Detector1 ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Mine_Detector1.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   12126 bytes (37.0% Full)
+(.text + .data + .bootloader)
+
+Data:        270 bytes (13.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+18:50:36 Build Finished (took 653ms)
+

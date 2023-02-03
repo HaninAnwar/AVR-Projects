@@ -1,0 +1,39 @@
+18:38:55 **** Incremental Build of configuration Debug for project FreeRTOS ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c:18: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: FreeRTOS.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,FreeRTOS.map -mmcu=atmega32 -o "FreeRTOS.elf"  ./CLCD_program.o ./DIO_program.o ./GIE_program.o ./PORT_program.o ./croutine.o ./heap_1.o ./list.o ./main.o ./port.o ./queue.o ./tasks.o ./timers.o   
+Finished building target: FreeRTOS.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S FreeRTOS.elf  >"FreeRTOS.lss"
+Finished building: FreeRTOS.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex FreeRTOS.elf  "FreeRTOS.hex"
+Finished building: FreeRTOS.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 FreeRTOS.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   16086 bytes (49.1% Full)
+(.text + .data + .bootloader)
+
+Data:       1186 bytes (57.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+18:39:03 Build Finished (took 8s.49ms)
+

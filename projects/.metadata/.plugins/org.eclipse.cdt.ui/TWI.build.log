@@ -1,0 +1,25 @@
+21:48:50 **** Build of configuration Debug for project TWI ****
+make all 
+Building file: ../DIO_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"DIO_program.d" -MT"DIO_program.o" -c -o "DIO_program.o" "../DIO_program.c"
+Finished building: ../DIO_program.c
+ 
+Building file: ../PORT_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"PORT_program.d" -MT"PORT_program.o" -c -o "PORT_program.o" "../PORT_program.c"
+Finished building: ../PORT_program.c
+ 
+Building file: ../TWI_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"TWI_program.d" -MT"TWI_program.o" -c -o "TWI_program.o" "../TWI_program.c"
+Finished building: ../TWI_program.c
+ 
+Building target: TWI.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,TWI.map -mmcu=atmega32 -o "TWI.elf"  ./DIO_program.o ./PORT_program.o ./TWI_program.o   
+f:/embedded/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o:(.init9+0x0): undefined reference to `main'
+make: *** [TWI.elf] Error 1
+
+21:48:53 Build Finished (took 2s.797ms)
+

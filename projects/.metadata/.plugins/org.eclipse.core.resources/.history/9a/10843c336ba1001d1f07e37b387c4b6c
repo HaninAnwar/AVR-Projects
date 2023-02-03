@@ -1,0 +1,77 @@
+#include "STD_TYPES.h"
+#include <util/delay.h>
+
+#include "DIO_interface.h"
+#include "PORT_interface.h"
+#include "TIMER_interface.h"
+#include "GIE_interface.h"
+
+#include "CLCD_interface.h"
+
+
+void Ultrasonic(void);
+
+static u16 PulseWedth = 0;
+
+void main(void)
+{
+	u16 Local_u16Distance = 0;
+
+	PORT_voidInit();
+	CLCD_voidInit();
+	TIMER1_u8Init(TIMER1_CHANNEL_A,NORMAL,DISCONNECT,TIMER_DIV_BY_1);
+	GIE_voidEnable();
+
+
+	TIMER_u8SetCallBack(TIMER1_ICU_INT,&Ultrasonic);
+
+	CLCD_voidSendString("Welcome");
+	_delay_ms(200);
+
+
+
+	while(1)
+	{
+
+		DIO_u8SetPinValue(DIO_u8PORTD,DIO_u8PIN7,DIO_u8PIN_HIGH);
+		_delay_us(10);
+		DIO_u8SetPinValue(DIO_u8PORTD,DIO_u8PIN7,DIO_u8PIN_LOW);
+
+		ICU_voidInit();
+
+		while(PulseWedth == 0);
+		Local_u16Distance = PulseWedth/466;
+
+
+		CLCD_voidSendCommand(1);
+
+		CLCD_voidWriteNumber(Local_u16Distance,0,0);
+		_delay_ms(1000);
+	}
+}
+
+void Ultrasonic(void)
+{
+	static u8 Local_u8Counter = 0;
+	static u16 Local_u16PulseStart , Local_u16PulseEnd;
+
+	Local_u8Counter++;
+
+	/*Pulse is started*/
+	if(Local_u8Counter % 2 == 1)
+	{
+		Local_u16PulseStart = ICU_u16ReadingICU();
+
+		ICU_u8SetTiggerEdge(ICU_FALLING_EDGE);
+	}
+	/*Pulse is ended*/
+	else
+	{
+		Local_u16PulseEnd = ICU_u16ReadingICU();
+
+		PulseWedth = Local_u16PulseEnd - Local_u16PulseStart;
+
+		ICU_u8EnableControl(ICU_INT_DISABLE);
+
+	}
+}

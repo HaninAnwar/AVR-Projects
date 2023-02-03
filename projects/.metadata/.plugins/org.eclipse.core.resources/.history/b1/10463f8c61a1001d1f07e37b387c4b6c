@@ -1,0 +1,60 @@
+#include "STD_TYPES.h"
+#include <util/delay.h>
+
+#include "DIO_interface.h"
+#include "PORT_interface.h"
+#include "TIMER_interface.h"
+
+#include "CLCD_interface.h"
+
+
+void Ultrasonic(void);
+
+static u16 PulseWedth = 0;
+
+void main(void)
+{
+
+	PORT_voidInit();
+	CLCD_voidInit();
+
+	TIMER1_u8Init(TIMER1_CHANNEL_A,NORMAL,DISCONNECT,TIMER_DIV_BY_1);
+	ICU_voidInit();
+
+
+	GIE_voidEnable();
+
+	TIMER_u8SetCallBack(TIMER1_ICU_INT,&Ultrasonic);
+
+
+	while(1)
+	{
+
+	}
+}
+
+void Ultrasonic(void)
+{
+	static u8 Local_u8Counter = 0;
+	static u16 Local_u16PulseStart , Local_u16PulseEnd;
+
+	Local_u8Counter++;
+
+	/*Pulse is started*/
+	if(Local_u8Counter == 1)
+	{
+		Local_u16PulseStart = ICU_u16ReadingICU();
+
+		ICU_voidSetTiggerEdge(ICU_FALLING_EDGE);
+	}
+	/*Pulse is ended*/
+	else if(Local_u8Counter == 2)
+	{
+		Local_u16PulseEnd = ICU_u16ReadingICU();
+
+		PulseWedth = Local_u16PulseEnd - Local_u16PulseStart;
+
+		ICU_voidEnableControl(ICU_INT_DISABLE);
+
+	}
+}

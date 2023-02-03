@@ -1,0 +1,11 @@
+#include "BIT_MATH.h"
+
+#include "BLTH_config.h"
+#include "BLTH_interface.h"
+#include "BLTH_private.h"
+
+u8 BLTH_u8MotionControl(void)
+{
+	USART_u8ReceiverInterruptControl(RX_INT_ENABLE);
+	USART_voidSetRxCallBackFunc(&Bluetooth);
+}

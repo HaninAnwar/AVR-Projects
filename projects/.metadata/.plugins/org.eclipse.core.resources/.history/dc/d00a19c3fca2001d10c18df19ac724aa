@@ -1,0 +1,10 @@
+#include "BIT_MATH.h"
+
+#include "BLTH_config.h"
+#include "BLTH_interface.h"
+#include "BLTH_private.h"
+
+u8 BLTH_u8MotionControl(void)
+{
+
+}

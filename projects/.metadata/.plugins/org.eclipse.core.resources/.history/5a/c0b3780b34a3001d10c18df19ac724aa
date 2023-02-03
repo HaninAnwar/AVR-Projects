@@ -1,0 +1,13 @@
+#include "STD_TYPES.h"
+
+#include "METDECT_config.h"
+#include "METDECT_interface.h"
+#include "METDECT_private.h"
+
+#include "EXTI_interface.h"
+
+
+u8 METDECT_u8MetalDetected(void)
+{
+
+}

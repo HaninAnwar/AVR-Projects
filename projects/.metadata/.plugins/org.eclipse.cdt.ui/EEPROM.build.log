@@ -1,0 +1,65 @@
+22:24:52 **** Incremental Build of configuration Debug for project EEPROM ****
+make all 
+Building file: ../DIO_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"DIO_program.d" -MT"DIO_program.o" -c -o "DIO_program.o" "../DIO_program.c"
+Finished building: ../DIO_program.c
+ 
+Building file: ../EEPROM_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"EEPROM_program.d" -MT"EEPROM_program.o" -c -o "EEPROM_program.o" "../EEPROM_program.c"
+Finished building: ../EEPROM_program.c
+ 
+Building file: ../PORT_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"PORT_program.d" -MT"PORT_program.o" -c -o "PORT_program.o" "../PORT_program.c"
+Finished building: ../PORT_program.c
+ 
+Building file: ../TWI_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"TWI_program.d" -MT"TWI_program.o" -c -o "TWI_program.o" "../TWI_program.c"
+Finished building: ../TWI_program.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:2:
+f:/embedded/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:11: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: EEPROM.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,EEPROM.map -mmcu=atmega32 -o "EEPROM.elf"  ./DIO_program.o ./EEPROM_program.o ./PORT_program.o ./TWI_program.o ./main.o   
+Finished building target: EEPROM.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S EEPROM.elf  >"EEPROM.lss"
+Finished building: EEPROM.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex EEPROM.elf  "EEPROM.hex"
+Finished building: EEPROM.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex EEPROM.elf  "EEPROM.eep"
+Finished building: EEPROM.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 EEPROM.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    5214 bytes (15.9% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+22:24:57 Build Finished (took 5s.193ms)
+
