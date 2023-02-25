@@ -1,0 +1,11 @@
+#include "STD_TYPES.h"
+
+#include "DIO_interface.h"
+#include "TIMER_interface.h"
+
+#include "MAPPING.h"
+
+void PWM_voidSetPWM(u8 Copy_u8Duration)
+{
+	TIMER2_voidSetCompMatchVal(Copy_u8Duration);
+}

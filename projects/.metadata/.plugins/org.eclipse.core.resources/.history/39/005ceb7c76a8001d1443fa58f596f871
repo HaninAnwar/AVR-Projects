@@ -1,0 +1,128 @@
+#include "STD_TYPES.h"
+#include <util/delay.h>
+
+#include "DIO_interface.h"
+#include "PORT_interface.h"
+#include "TIMER_interface.h"
+#include "GIE_interface.h"
+#include "EXTI_interface.h"
+#include "USART_interface.h"
+
+#include "LED_interface.h"
+#include "CLCD_interface.h"
+#include "ULTSONC_interface.h"
+#include "BLTH_interface.h"
+#include "METDECT_interface.h"
+
+//#include "ULTSONC_program.c"
+
+extern u8 ULTSONC_u8ObstecalFlag,BLTH_MotionFlag,METDECT_MineFlag;
+
+void main(void)
+{
+	LED_T *Left_Forwd,*Left_Back,*Right_Forwd,*Right_Back;
+	Left_Forwd->Port = DIO_u8PORTA;
+	Left_Forwd->Pin = DIO_u8PIN4;
+	Left_Forwd->ConnectionType = LED_u8SOURCE;
+
+	Left_Back->Port = DIO_u8PORTA;
+	Left_Back->Pin = DIO_u8PIN7;
+	Left_Back->ConnectionType = LED_u8SOURCE;
+
+	Right_Back->Port = DIO_u8PORTA;
+	Right_Back->Pin = DIO_u8PIN6;
+	Right_Back->ConnectionType = LED_u8SOURCE;
+
+	Right_Forwd->Port = DIO_u8PORTA;
+	Right_Forwd->Pin = DIO_u8PIN5;
+	Right_Forwd->ConnectionType = LED_u8SOURCE;
+
+
+
+	PORT_voidInit();
+	CLCD_voidInit();
+
+	/*Initialize timer0 for generate trigger pulse each 1ms*/
+	TIMER0_u8Init(NORMAL,DISCONNECT,TIMER_DIV_BY_1);
+
+	/*Timer1 for echo pulse calculation*/
+	TIMER1_u8Init(TIMER1_CHANNEL_A,NORMAL,DISCONNECT,TIMER_DIV_BY_1);
+
+	USRAT_voidInit();
+
+	/*EXT0 On Change for Metal Detector*/
+	EXTI_voidInt2Init();
+
+	GIE_voidEnable();
+
+
+	while(1)
+	{
+
+		//		LED_voidTurnOn(Left_Back);
+		//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN0,DIO_u8PIN_HIGH);
+		//		_delay_ms(250);
+		//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN0,DIO_u8PIN_LOW);
+		//		_delay_ms(250);
+		//
+		//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN4,DIO_u8PIN_HIGH);
+		//		_delay_ms(250);
+		//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN4,DIO_u8PIN_LOW);
+		//		_delay_ms(250);
+		//
+		//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN5,DIO_u8PIN_HIGH);
+		//		_delay_ms(250);
+		//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN5,DIO_u8PIN_LOW);
+		//		_delay_ms(250);
+		//
+		//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN6,DIO_u8PIN_HIGH);
+		//		_delay_ms(250);
+		//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN6,DIO_u8PIN_LOW);
+		//		_delay_ms(250);
+		//
+		//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN7,DIO_u8PIN_HIGH);
+		//		_delay_ms(250);
+		//		DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN7,DIO_u8PIN_LOW);
+		//		_delay_ms(250);
+
+		//		if((BLTH_u8MotionControl() == 1) && (ULTSONC_u16ObstacleDetection() == 0))
+		//		{
+		//			DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN0,DIO_u8PIN_HIGH);
+		////			_delay_ms(250);
+		////			DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN0,DIO_u8PIN_LOW);
+		////			_delay_ms(250);
+		//		}
+		//		else
+		//		{
+		//			DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN0,DIO_u8PIN_LOW);
+		//
+		//		}
+		if((ULTSONC_u16ObstacleDetection() == 0) && (BLTH_u8MotionControl() == 1) && (METDECT_u8MetalDetected() == 0))
+		{
+
+			/*Move*/
+			LED_voidTurnOn(Left_Forwd);
+			LED_voidTurnOn(Right_Forwd);
+		}
+		else if (ULTSONC_u8ObstecalFlag == 1)
+		{
+			/*Stop*/
+			LED_voidTurnOff(Left_Forwd);
+			LED_voidTurnOff(Right_Forwd);
+			DIO_u8SetPinValue(DIO_u8PORTA,DIO_u8PIN7,DIO_u8PIN_HIGH);
+
+
+		}
+		else if (METDECT_MineFlag == 1)
+		{
+			LED_voidTurnOn(Left_Forwd);
+		}
+		else if(BLTH_MotionFlag == 1)
+		{
+			LED_voidTurnOn(Left_Back);
+
+		}
+	}
+}
+
+

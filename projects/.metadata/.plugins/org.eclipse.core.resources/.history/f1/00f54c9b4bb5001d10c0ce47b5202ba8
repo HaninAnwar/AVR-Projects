@@ -1,0 +1,31 @@
+/***********************************************************************/
+/***********************************************************************/
+/************************ AUTHER : Hanin Anwar   ***********************/
+/************************ LAYER  : HAL           ************************/
+/************************ SWC    : PORT          ************************/
+/************************ VERSION : 1.00         ************************/
+/***********************************************************************/
+/***********************************************************************/
+
+
+#ifndef MOTOR_CONFIG_H_
+#define MOTOR_CONFIG_H_
+
+/*PWM Pins :
+ * 1. PORTB_PIN3
+ * 2. PORTD_PIN4
+ * 3. PORTD_PIN5
+ * 4. PORTD_PIN7*/
+
+#define PWM_PIN_1		PORTB_PIN3
+#define PWM_PIN_2		PORTD_PIN4
+#define PWM_PIN_3		NULL
+#define PWM_PIN_4		NULL
+
+/*Stepper Resolution :
+ * Options : 1.FULL_STEP
+* 			 2.HALF_STEP*/
+#define MOTOR_STEPPER_RESOLUTIUON	FULL_STEP
+
+
+#endif

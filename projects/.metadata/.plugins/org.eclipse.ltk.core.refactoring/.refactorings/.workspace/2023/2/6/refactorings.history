@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 4 resources" deleteContents="false" description="Delete 4 resources" element1="/Ultrasonic_Bluetooth/CLCD_config.h" element2="/Ultrasonic_Bluetooth/CLCD_interface.h" element3="/Ultrasonic_Bluetooth/CLCD_private.h" element4="/Ultrasonic_Bluetooth/CLCD_program.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="4" stamp="1676129104648"/>
+</session>
